@@ -1,4 +1,4 @@
-# Additional Documentation For Making a GAN Paint Scratch Block
+# Documentation For Making a GAN Paint Scratch Block
 
 
 ## Contents
@@ -13,9 +13,16 @@
 
 
 ## Introduction
-Hi, I'm Philip, the UROP who was working on this project during summer 2019. The project is to take [GAN Paint](http://gandissect.res.ibm.com/ganpaint.html?project=churchoutdoor&layer=layer4) and put it in a Scratch block. I got a lot of the work done, but there is still more to do, which I will outline here. I will also explain how to get started making Scratch extensions in the first place, and some other relevant information. If you have any questions, feel free to contact me at my Kerberos email (ptegmark at mit dot-edu), and I'll be happy to help. 
+Hi, I'm Philip, the UROP who was working on this project during summer 2019. The project is effectively to take [GAN Paint](http://gandissect.res.ibm.com/ganpaint.html?project=churchoutdoor&layer=layer4) and put it in a Scratch block. I got a lot of the work done, but there is still more to do, which I will outline here. I will also explain how to get started making Scratch extensions in the first place, and some other relevant information. If you have any questions about anything, feel free to contact me at my Kerberos email (ptegmark at mit dot-edu), and I'll be happy to help. 
 
-A quick note: for clarity, I will be disregarding the English grammar rule of including punctuation from outside a quote within the quotation marks should it immediately follow the quote. I will instead by leaving all punctuation that is not part of the quote outside the quotation marks. For example, if "field_ganpaint.js" is a file that I want you to open, I will type: 
+Also, a quick note: as you are probably aware, when you follow up something in quotes with a punctuation mark, the English language dictates that the punctuation mark must also be included within the quotation marks, even if said punctuation mark was not part of the quote to begin with. For example, if I wanted to tell you that "orange" was the only word that my friend said, the English language dictates that I write: 
+
+>My friend only said the word "orange." 
+
+with the period included inside the quotation marks, even though the period is not part of what I am actually quoting. 
+
+For clarity, I will be disregarding this rule, and keeping all punctuation that is not part of the quote outside of the quotation marks. So, for example, if "field_ganpaint.js" is a file that I want you to open, I will type: 
+
 >Please open "field_matrix.js". 
 
 instead of typing: 
@@ -26,22 +33,22 @@ which is what English grammar would dictate that I do.
 
 
 ## What is GAN Paint? 
-GAN Paint is a tool that has used GANs (Generative Adversarial Networks) to generate 16 photorealistic images of churches. By using the various brushes provided, and then shading in the image, the you can tell GAN Paint to add or remove certain features to/from different parts of the image, and GAN Paint will alter the image accordingly. I recommend that you play around with it for a few minutes to see what I'm talking about. 
+[GAN Paint](http://gandissect.res.ibm.com/ganpaint.html?project=churchoutdoor&layer=layer4) is a tool that has used GANs (Generative Adversarial Networks) to generate 16 photorealistic images of churches. By using the various brushes provided, and then shading in the image, the you can tell GAN Paint to add or remove certain features to/from different parts of the image, and GAN Paint will alter the image accordingly. I recommend that you play around with it for a few minutes to see what I'm talking about. 
 
 
 
 ## What is Scratch? 
-I would describe Scratch as a programming language for kids, developed by the Lifelong Kindergarten Group at the MIT Media Lab. It uses blocks instead of lines of code (which is nice because that eliminates syntax errors), and is overall more intuitive to understand. You can make all sorts of projects in Scratch, and then share them on the [Scratch website](scratch.mit.edu). Scratch can do most of what other programming languages can do, although a Scratch file can only be run inside the Scratch editor. Scratch's other downsides are that it is very slow at math when compared to other programming languages, and that (as far as I am aware) it cannot read or write to outside files. 
+I would describe Scratch as a programming language for kids, developed by the Lifelong Kindergarten Group at the MIT Media Lab. It uses blocks instead of lines of code (which is nice because that eliminates syntax errors), and is overall more intuitive to understand than most other programming languages. You can make all sorts of projects in Scratch, and then share them on the [Scratch website](scratch.mit.edu). Scratch can do most of what other programming languages can do, although a Scratch file can only be run inside the Scratch editor. Scratch's other downsides are that it is very slow at math when compared to other programming languages, and that (as far as I am aware) it cannot read or write to outside files. 
 
-For more information, check out Scratch's about page [here](https://scratch.mit.edu/about). 
+For more information, check out Scratch's About page [here](https://scratch.mit.edu/about). 
 
 Or try using Scratch [here](https://scratch.mit.edu/projects/editor/?tutorial=getStarted). If you have never used Scratch before, I would highly recommend that you play around with it for an hour, and at least learn what the following are: blocks, sprites, costumes/backdrops, and the Stage. Try creating at least one new sprite, write at least 1 script for it, and draw a costume for it. Also try importing an image file from your computer as a new costume, since I think this feature may be of interest down the line for the GAN Paint extension. 
 
-The latest version of Scratch (and the one that we'll be working with) is Scratch 3. Scratch is written primarily in JavaScript, and has both an [online editor](https://scratch.mit.edu/projects/editor/?tutorial=getStarted) and an [offline editor](https://scratch.mit.edu/download/). The repositories for the code to Scratch's online editor are publicly available on GitHub, at [https://github.com/LLK/](https://github.com/LLK/). 
+As of when I wrote this, the latest version of Scratch (and the one that we'll be working with) is Scratch 3. Scratch is written primarily in JavaScript, and has both an [online editor](https://scratch.mit.edu/projects/editor/?tutorial=getStarted) and an [offline editor](https://scratch.mit.edu/download/). The repositories for the code to Scratch's online editor are publicly available on GitHub, at [https://github.com/LLK/](https://github.com/LLK/). 
 
 Scratch has various different types of blocks. They are: Motion, Looks, Sound, Events, Control, Sensing, Operators, Variables, and My Blocks. However, you can make extensions to Scratch. An extension adds a new set of blocks with their own functionality. For example, the Translate extension lets you use Google Translate to translate text into different languages. 
 
-Only 11 extensions are officially supported by Scratch, so any extensions you make (unless later incorporated into Scratch by the Scratch team) can only be used on your computer. For more information, see the Scratch 3 Extensions Documentation [here](https://github.com/LLK/scratch-vm/blob/develop/docs/extensions.md). 
+Only 11 extensions are officially supported by Scratch, so any extensions you make (unless later incorporated into Scratch by the Scratch team) can only be used on your computer. For more information, see the [Scratch 3 Extensions Documentation](https://github.com/LLK/scratch-vm/blob/develop/docs/extensions.md). 
 
 
 ## How to make Scratch Extensions
@@ -78,19 +85,23 @@ Alright, provided that you're not planning on making your own field types, you s
 
 
 ## The current state of the GAN Paint block
-The goal of my project was to make a Scratch block that would let you use the GAN Paint editor inside of Scratch, and then save the image that you create as either a sprite costume or as a background to the Stage. 
+The goal of my project was to make a Scratch block that would let you use the GAN Paint editor inside of Scratch, and then save the image that you created either as a sprite costume or as a background to the Stage. 
+
 
 [Repository Links]
 
-During my time working on the project, I created a new extension called GAN Paint, with 1 block. This block says "save [EDITOR] as a costume" where [EDITOR] is a clickable dropdown that contains the GAN Paint editor. 
+
+During my time working on the project, I created a new Scratch extension called GAN Paint, which has only 1 block. This block says "save [EDITOR] as a costume" where [EDITOR] is a clickable dropdown that contains the GAN Paint editor. Here's a picture of the block with the dropdown opened: 
+
 
 [Image of GAN Paint block and dropdown]
 
-The block's opcode (what happens when the block gets activated) currently does nothing. Once operational, however, the block's opcode should save the GAN Paint editor's main image either as a backdrop of the Stage, or as a costume of the sprite that owns the block. 
+
+The block's opcode (the opcode is the function runs when the block gets activated) currently does nothing besides print some stuff to the console (this is not important, and you can remove my "console.log" statement with no repercussions). Once completed, however, the block's opcode is supposed to save the GAN Paint editor's main image either as a backdrop of the Stage, or as a costume of the sprite that owns the block. 
 
 What The Block Currently Does: 
 
-* Displays a dropdown GUI for the GAN Paint editor. This dropdown field is of the type "ganpaint", a new field type that I created for this project. 
+* It displays a dropdown GUI for the GAN Paint editor. This dropdown field is of the type "ganpaint", a new field type that I created for this project. 
 * The dropdown GUI has: 11 buttons with text on its left hand side (I will inventively refer to these buttons as "text buttons"), the main image that is being edited in the middle, and 16 buttons on the right hand side for selecting which starting church image to use (I will creatively refer to these buttons as "church selection buttons"). 
 * The first 7 of the text buttons (labeled "tree" through "dome") are used to select which brush you are using. They act as a set of radio buttons (so that only 1 of the 7 can be selected at any given time). A string called "brushState" records which of the 7 brush buttons is currently selected (see scratch-blocks/core/field_ganpaint.js). 
 * The 8th and 9th text buttons (labeled "draw" and "remove", respectively) are for the user to select whether they are adding or removing a given feature from the main image. These two buttons act like radio buttons (so that only one of two can be selected at any given time). A string called "drawingState" records which of these two buttons is currently selected (see scratch-blocks/core/field_ganpaint.js). 
@@ -117,10 +128,30 @@ What The Block Still Needs To Do:
 // ***
 ```
 
-* The field will also have to get a response from the GAN Paint server containing the new main image, which the field will then display as the new main image. The function "Blockly.FieldGANPaint.prototype.setValue" (in the file "scratch-blocks/core/field_ganpaint.js") might be of use in displaying the image from the GAN Paint server as the new main image, although you will need to modify the function first to make it better suit your needs. 
+* Continuing off of the previous point, the ganpaint field will also have to get a response from the GAN Paint server. This response should contain the new main image, which the ganpaint field will then display as the new main image. The function "Blockly.FieldGANPaint.prototype.setValue" (in the file "scratch-blocks/core/field_ganpaint.js") might be of use in displaying the image from the GAN Paint server as the new main image, although you will need to modify the function first to make it better suit your needs. 
+
+* When activated, the GAN Paint block should (it does not currently do this) save its main image as either a sprite costume or as a Stage backdrop. To accomplish this, you will need to add code to the GAN Paint block's opcode (i.e. the function "saveGANPaintImage" within the file "scratch-vm/src/extensions/scratch3_ganpaint/index.js"). Scratch does let the user import an external image to use as a costume--if you can figure out what JavaScript function it is that does this, you can probably use that function to save the main GAN Paint image as a costume or backdrop. 
 
 
-Undo, talk to server, save image, Safari, highlight dragged part of main image, etc. 
+[Where should they look for this function? What should they do about your commented out code in index.js?]
+
+
+* The SVG images that I have used to create the GAN Paint field don't display properly in Safari. In Safari, you just get this instead: 
+
+
+[Include the appropriate picture here]
+
+
+This needs to be fixed. You will need the GAN Paint extension to function properly in Firefox, Chrome, Safari, and Microsoft Edge (possibly also Internet Explorer and Opera--ask your supervisor about what browsers the GAN Paint extension needs to function properly in). Right now, the SVG images in question do display properly in Firefox though, I can guarantee that much. 
+
+[What about Chrome and Edge?]
+
+* On the [GAN Paint website](http://gandissect.res.ibm.com/ganpaint.html?project=churchoutdoor&layer=layer4), the main image is visibly shaded as the user drags their mouse over it. Currently, however, the ganpaint field in Scratch does not do so. So, if you have time, this should be implemented in the ganpaint field. To accomplish this, you will probably need to add code to the functions "Blockly.FieldGANPaint.prototype.onMouseDown" and "Blockly.FieldGANPaint.prototype.onMouseMove" in the file "scratch-blocks/core/field-ganpaint.js". 
+
+
+
+
+Undo, talk to server, save image, Safari (test all browsers), highlight dragged part of main image, etc. 
 
 
 
@@ -132,9 +163,42 @@ Undo, talk to server, save image, Safari, highlight dragged part of main image, 
 
 
 index.jsx help link should be changed
+mention blocks playground in "The Current State of the GAN Paint Block" section
 include list of links at bottom
 
 
 
 
+
+
+
+## The blocks playground
+
+
+
+
+
+## How to make custom field types
+
+First off, what is a field type? A field type is 
+NOT DONE
+
+
+
+
+## Other notes
+
+This section will contain various potentially useful pieces of information. 
+
+[Include list of resources (including stuff like MDN Docs and W3 Schools)]
+
+
+
+
+
+
 UNFINISHED
+
+
+
+
