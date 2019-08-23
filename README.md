@@ -15,6 +15,8 @@
 ## Introduction
 Hi, I'm Philip, the UROP who was working on this project during summer 2019. The project is effectively to take [GAN Paint](http://gandissect.res.ibm.com/ganpaint.html?project=churchoutdoor&layer=layer4) and put it in a Scratch block. I got a lot of the work done, but there is still more to do, which I will outline here. I will also explain how to get started making Scratch extensions in the first place, and some other relevant information. If you have any questions about anything, feel free to contact me at my Kerberos email (ptegmark at mit dot-edu), and I'll be happy to help. 
 
+If you are going to work on completing the GAN Paint extension, please go through all sections of this document. If, however, you're only here to learn how to make Scratch extensions, you need only go through the sections "What is Scratch?" and "How to make Scratch extensions", as well as "The blocks playground" and "How to make custom field types" if you plan on creating your own field type(s) as well. 
+
 Also, a quick note: as you are probably aware, when you follow up something in quotes with a punctuation mark, the English language dictates that the punctuation mark must also be included within the quotation marks, even if said punctuation mark was not part of the quote to begin with. For example, if I wanted to tell you that "orange" was the only word that my friend said, the English language dictates that I write: 
 
 >My friend only said the word "orange." 
@@ -102,11 +104,17 @@ The block's opcode (the opcode is the function runs when the block gets activate
 What The Block Currently Does: 
 
 * It displays a dropdown GUI for the GAN Paint editor. This dropdown field is of the type "ganpaint", a new field type that I created for this project. 
+
 * The dropdown GUI has: 11 buttons with text on its left hand side (I will inventively refer to these buttons as "text buttons"), the main image that is being edited in the middle, and 16 buttons on the right hand side for selecting which starting church image to use (I will creatively refer to these buttons as "church selection buttons"). 
+
 * The first 7 of the text buttons (labeled "tree" through "dome") are used to select which brush you are using. They act as a set of radio buttons (so that only 1 of the 7 can be selected at any given time). A string called "brushState" records which of the 7 brush buttons is currently selected (see scratch-blocks/core/field_ganpaint.js). 
+
 * The 8th and 9th text buttons (labeled "draw" and "remove", respectively) are for the user to select whether they are adding or removing a given feature from the main image. These two buttons act like radio buttons (so that only one of two can be selected at any given time). A string called "drawingState" records which of these two buttons is currently selected (see scratch-blocks/core/field_ganpaint.js). 
+
 * When clicked, the 11th text button (labeled "reset") resets the main image to display the original version of the image currently being edited. 
+
 * If the user drags the mouse across the main image, the coordinates of all points within the image that the mouse drags over will be stored in an array called "selectedPoints". selectedPoints is reset every time that the main image is clicked on or dragged. Currently, selectedPoints is simply being printed to the console once the user releases the mouse after dragging it across the main image. However, in the future, this should instead cause selectedPoints to be sent to the GAN Paint server, along with brushState, drawingState, and the current main image. 
+
 * When any given church selection button is clicked, the main image will be set to display the corresponding image. 
 
 What The Block Still Needs To Do: 
@@ -142,38 +150,29 @@ What The Block Still Needs To Do:
 [Include the appropriate picture here]
 
 
-This needs to be fixed. You will need the GAN Paint extension to function properly in Firefox, Chrome, Safari, and Microsoft Edge (possibly also Internet Explorer and Opera--ask your supervisor about what browsers the GAN Paint extension needs to function properly in). Right now, the SVG images in question do display properly in Firefox though, I can guarantee that much. 
+This needs to be fixed. You will need the GAN Paint extension to function properly in Firefox, Chrome, Safari, and Microsoft Edge (possibly also Internet Explorer and Opera--ask whoever is in charge (presumably Katherine Gallagher) about what browsers the GAN Paint extension needs to function properly in). Right now, the SVG images in question do display properly in Firefox though, I can guarantee that much. 
 
 [What about Chrome and Edge?]
 
 * On the [GAN Paint website](http://gandissect.res.ibm.com/ganpaint.html?project=churchoutdoor&layer=layer4), the main image is visibly shaded as the user drags their mouse over it. Currently, however, the ganpaint field in Scratch does not do so. So, if you have time, this should be implemented in the ganpaint field. To accomplish this, you will probably need to add code to the functions "Blockly.FieldGANPaint.prototype.onMouseDown" and "Blockly.FieldGANPaint.prototype.onMouseMove" in the file "scratch-blocks/core/field-ganpaint.js". 
 
+* Optional: Depending on the circumstances for which it is to be used, the GAN Paint extension might eventually need to be viewable in other languages. This, however, is completely optional at this point, as it is not at all an immediate concern. 
 
+Please read the section of this document called "The blocks playground" before you start making alterations to scratch-blocks/core/field_ganpaint.js, as the blocks playground will save you a lot of time. 
 
-
-Undo, talk to server, save image, Safari (test all browsers), highlight dragged part of main image, etc. 
-
-
-
-[Image of block?] 
-
-
-
-
-
-
-index.jsx help link should be changed
-mention blocks playground in "The Current State of the GAN Paint Block" section
-include list of links at bottom
-
-
-
-
-
+Good luck! And feel free to contact me if you have any questions (especially if I explained something poorly and/or forgot to mention something important). 
 
 
 ## The blocks playground
 
+As you may remember from [this tutorial](https://scratch.mit.edu/discuss/topic/336496/) from the section "How to make Scratch Extensions", if you make a change to the scratch-blocks directory and want that change to be reflected in your local version of Scratch, you'll need to: 
+
+* 1: Open the terminal and run the command "npm run prepublish" within the scratch-blocks directory. 
+* 2: Also in the terminal, run the command "npm start" within the scratch-gui directory. 
+
+This typically takes me about 3 minutes to do on my laptop, can be a pretty long time to have to wait just to see what effect your latest change to scratch-blocks had. But thankfully, the Scratch team has also created the blocks playground, which lets you view the changes you've made to scratch-blocks almost immediately. 
+
+The blocks playground is a tool that lets you test out your Scratch blocks without having to run "npm run prepublish" on scratch-blocks and without you having to load scratch-gui. To access it, just open the file 
 
 
 
@@ -190,8 +189,18 @@ NOT DONE
 
 This section will contain various potentially useful pieces of information. 
 
-[Include list of resources (including stuff like MDN Docs and W3 Schools)]
+[Include list of resources (including stuff like MDN Docs and W3 Schools, Inspect Element, console.log, Argument Types and Block Types)]
 
+[Include List of All Hyperlinks from previous sections]
+
+
+
+
+
+
+
+
+index.jsx help link should be changed
 
 
 
