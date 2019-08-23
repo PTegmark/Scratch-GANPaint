@@ -89,7 +89,7 @@ import newBlockButtonImageURL from './newblocks-small.png';
 to the list of import statements at the top of scratch-gui/src/lib/libraries/extensions/index.jsx. 
 
 * Ignore the next code snippet (block8.sh). In the terminal, cd into the scratch-gui directory, and then type "npm start" (without the quotation marks). 
-* In case you're new to JavaScript, all that the function console.log() does is print its argument to the console. It's JavaScript's version of the print statement. <br/><br/>
+* In case you're new to JavaScript, all that the function console.log() does is print its argument to the console. It's JavaScript's version of the print statement. 
 
 
 Alright, provided that you're not planning on making your own field types, you should now be set up to make your own Scratch extensions, and be acquainted with how to do so. If you do need to create your own field types (or if you don't know what that means and would like to know), see the section below on how to do so. While the GAN Paint extension does use a new field type, I already set that up, so you shouldn't have to worry too much about it. 
@@ -104,9 +104,11 @@ The goal of my project was to make a Scratch block that would let you use the GA
 
 During my time working on the project, I created a new Scratch extension called GAN Paint, which has only 1 block. This block says "save [EDITOR] as a costume" where [EDITOR] is a clickable dropdown that contains the GAN Paint editor. Here's a picture of the block with the dropdown opened: 
 
+![Image of GAN Paint block and dropdown](GAN%20Paint%20Dropdown.png)
 
-[Image of GAN Paint block and dropdown]
+And here is a more zoomed-in picture: 
 
+![Zoomed-In Image of GAN Paint block and dropdown](GAN%20Paint%20Dropdown%20Zoomed%20In.png)
 
 The block's opcode (the opcode is the function runs when the block gets activated) currently does nothing besides print some stuff to the console (this is not important, and you can remove my "console.log" statement with no repercussions). Once completed, however, the block's opcode is supposed to save the GAN Paint editor's main image either as a backdrop of the Stage, or as a costume of the sprite that owns the block. 
 
@@ -155,9 +157,7 @@ What The Block Still Needs To Do:
 
 * The SVG images that I have used to create the GAN Paint field don't display properly in Safari. In Safari, you just get this instead: 
 
-
-[Include the appropriate picture here]
-
+![Dropdown in Safari](GAN%20Paint%20Dropdown%20Safari.png)
 
 This needs to be fixed. You will need the GAN Paint extension to function properly in Firefox, Chrome, Safari, and Microsoft Edge (possibly also Internet Explorer and Opera--ask whoever is in charge (presumably Katherine Gallagher) about what browsers the GAN Paint extension needs to function properly in). Right now, the SVG images in question do display properly in Firefox though, I can guarantee that much. 
 
