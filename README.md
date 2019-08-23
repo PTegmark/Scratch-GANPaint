@@ -53,20 +53,28 @@ Scratch has various different types of blocks. They are: Motion, Looks, Sound, E
 Only 11 extensions are officially supported by Scratch, so any extensions you make (unless later incorporated into Scratch by the Scratch team) can only be used on your computer. For more information, see the [Scratch 3 Extensions Documentation](https://github.com/LLK/scratch-vm/blob/develop/docs/extensions.md). 
 
 
-## How to make Scratch Extensions
-Note: If you will be working on the GAN Paint extension, you can skip this section (make sure to still read the [Scratch 3 Extension documentation](https://github.com/LLK/scratch-vm/blob/develop/docs/extensions.md) though--it is extremely helpful), and instead just download my modified versions of the scratch-gui, scratch-vm, and scratch-blocks repositories from GitHub. Make sure to save all 3 repositories in the same folder. Said repositories can be found here: 
+## How to make Scratch extensions
+If you will be working on the GAN Paint extension, read the first half of this section. If you will not be working on the GAN Paint extension, read the second half of this section instead. 
+
+### If you will be working on the GAN Paint extension
+
+First make sure to install Git and npm (Node Package Manager) on your computer, and then download my modified versions of the scratch-gui, scratch-vm, and scratch-blocks repositories from GitHub. Make sure to save all 3 repositories in the same folder. Said repositories can be found here: 
 
 * scratch-gui: [https://github.com/PTegmark/scratch-gui](https://github.com/PTegmark/scratch-gui)
 * scratch-vm: [https://github.com/PTegmark/scratch-vm](https://github.com/PTegmark/scratch-vm)
 * scratch-blocks: [https://github.com/PTegmark/scratch-blocks](https://github.com/PTegmark/scratch-blocks)
 
-If you are not working on the GAN Paint extension however, and want to know how to make your own Scratch extension, keep reading! 
+To run the extension, open the terminal, cd into the scratch-gui directory, and enter the command "npm start". 
+
+To rebuild scratch-blocks (i.e. to make sure that the changes you make to scratch-blocks get expressed), you will need to open the terminal, cd into the scratch-blocks directory, and enter the command "npm run prepublish". This will need to be done before you execute "npm start" within scratch-gui for your changes to be expressed. Also, to execute "npm run prepublish" in scratch-blocks, you will need to be using Python 2 on your computer. This may require you setting up a virtual environment on your computer to run Python 2. If you don't know how to do this, talk to your supervisor, or try to figure it out yourself. 
+
+Also, make sure to read the [Scratch 3 Extension documentation](https://github.com/LLK/scratch-vm/blob/develop/docs/extensions.md) though--it is extremely helpful. 
 
 ----
 
-Alright, to set up everything you need to make Scratch extensions, follow the instructions given in [this tutorial](https://scratch.mit.edu/discuss/topic/336496/). Before you begin the tutorial, however, you will need to make sure that you have both Git and npm (Node Package Manager) installed on your computer. If they are not installed and you need help installing them, consult your supervisor for help, or try to figure it out yourself. 
+### If you want to know how to make your own Scratch extensions
 
-Of the 4 directories listed in the tutorial, you will at least need to download and set up scratch-gui, scratch-vm, and scratch-blocks in order to be able to work on the GAN Paint extension. 
+To set up everything you need to make Scratch extensions, follow the instructions given in [this tutorial](https://scratch.mit.edu/discuss/topic/336496/). Before you begin the tutorial, however, you will need to make sure that you have both Git and npm (Node Package Manager) installed on your computer. If they are not installed and you need help installing them, consult your supervisor for help, or try to figure it out yourself. 
 
 Also, in order to be able to use the "npm run prepublish" command listed in step 8 of the tutorial, you will need to be using Python 2 on your computer. This may require you setting up a virtual environment on your computer to run Python 2. If you don't know how to do this, talk to your supervisor, or try to figure it out yourself. <br/><br/>
 
