@@ -54,12 +54,21 @@ Only 11 extensions are officially supported by Scratch, so any extensions you ma
 
 
 ## How to make Scratch Extensions
+Note: If you will be working on the GAN Paint extension, you can skip this section (make sure to still read the [Scratch 3 Extension documentation](https://github.com/LLK/scratch-vm/blob/develop/docs/extensions.md) though--it is extremely helpful), and instead just download my modified versions of the scratch-gui, scratch-vm, and scratch-blocks repositories from GitHub. Make sure to save all 3 repositories in the same folder. Said repositories can be found here: 
 
-To set up everything you need to make Scratch extensions, follow the instructions given in [this tutorial](https://scratch.mit.edu/discuss/topic/336496/). Before you begin the tutorial, however, you will need to make sure that you have both Git and npm (Node Package Manager) installed on your computer. If they are not installed and you need help installing them, consult your supervisor for help, or try to figure it out yourself. 
+* scratch-gui: [https://github.com/PTegmark/scratch-gui](https://github.com/PTegmark/scratch-gui)
+* scratch-vm: [https://github.com/PTegmark/scratch-vm](https://github.com/PTegmark/scratch-vm)
+* scratch-blocks: [https://github.com/PTegmark/scratch-blocks](https://github.com/PTegmark/scratch-blocks)
+
+If you are not working on the GAN Paint extension however, and want to know how to make your own Scratch extension, keep reading! 
+
+----
+
+Alright, to set up everything you need to make Scratch extensions, follow the instructions given in [this tutorial](https://scratch.mit.edu/discuss/topic/336496/). Before you begin the tutorial, however, you will need to make sure that you have both Git and npm (Node Package Manager) installed on your computer. If they are not installed and you need help installing them, consult your supervisor for help, or try to figure it out yourself. 
 
 Of the 4 directories listed in the tutorial, you will at least need to download and set up scratch-gui, scratch-vm, and scratch-blocks in order to be able to work on the GAN Paint extension. 
 
-Also, in order to be able to use the "npm run prepublish" command listed in step 8 of the tutorial, you will need to be using Python 2 on your computer. This may require you setting up a virtual environment on your computer to run Python 2. If you don't know how to do this, talk to your supervisor, or try to figure it out yourself. 
+Also, in order to be able to use the "npm run prepublish" command listed in step 8 of the tutorial, you will need to be using Python 2 on your computer. This may require you setting up a virtual environment on your computer to run Python 2. If you don't know how to do this, talk to your supervisor, or try to figure it out yourself. <br/><br/>
 
 
 Once you've successfully completed the tutorial, you can start making extensions! I highly recommend that you read through the Scratch 3 Extension documentation [here](https://github.com/LLK/scratch-vm/blob/develop/docs/extensions.md). 
@@ -80,18 +89,18 @@ import newBlockButtonImageURL from './newblocks-small.png';
 to the list of import statements at the top of scratch-gui/src/lib/libraries/extensions/index.jsx. 
 
 * Ignore the next code snippet (block8.sh). In the terminal, cd into the scratch-gui directory, and then type "npm start" (without the quotation marks). 
-* In case you're new to JavaScript, all that the function console.log() does is print its argument to the console. It's JavaScript's version of the print statement. 
+* In case you're new to JavaScript, all that the function console.log() does is print its argument to the console. It's JavaScript's version of the print statement. <br/><br/>
 
 
 Alright, provided that you're not planning on making your own field types, you should now be set up to make your own Scratch extensions, and be acquainted with how to do so. If you do need to create your own field types (or if you don't know what that means and would like to know), see the section below on how to do so. While the GAN Paint extension does use a new field type, I already set that up, so you shouldn't have to worry too much about it. 
 
 
 ## The current state of the GAN Paint block
-The goal of my project was to make a Scratch block that would let you use the GAN Paint editor inside of Scratch, and then save the image that you created either as a sprite costume or as a background to the Stage. 
+The goal of my project was to make a Scratch block that would let you use the GAN Paint editor inside of Scratch, and then save the image that you created either as a sprite costume or as a background to the Stage. To accomplish this, I downloaded the scratch-gui, scratch-vm, and scratch-blocks repositories from GitHub (as explained in the section "How to make Scratch extensions"), and modified them accordingly. Here are my versions of the repositories that I altered: 
 
-
-[Repository Links]
-
+* scratch-gui: [https://github.com/PTegmark/scratch-gui](https://github.com/PTegmark/scratch-gui)
+* scratch-vm: [https://github.com/PTegmark/scratch-vm](https://github.com/PTegmark/scratch-vm)
+* scratch-blocks: [https://github.com/PTegmark/scratch-blocks](https://github.com/PTegmark/scratch-blocks)
 
 During my time working on the project, I created a new Scratch extension called GAN Paint, which has only 1 block. This block says "save [EDITOR] as a costume" where [EDITOR] is a clickable dropdown that contains the GAN Paint editor. Here's a picture of the block with the dropdown opened: 
 
@@ -198,11 +207,11 @@ This section will contain various potentially useful pieces of information.
 
 
 
-
+npm start and npm run prepublish
 
 index.jsx help link should be changed
 
-
+This section explains how to make your own Scratch extensions (irrespective of whether or not you'll be working on the GAN Paint extension). If you are going to be working on the GAN Paint extension, just download my versions of the scratch-gui, scratch-vm, and scratch-blocks directories instead, and save them in the same folder on your computer. My versions of the directories can be found at: 
 
 
 
