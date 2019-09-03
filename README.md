@@ -7,8 +7,8 @@
 * What is Scratch? 
 * How to make Scratch extensions
 * The current state of the GAN Paint block
-* The blocks playground
 * How to make custom field types
+* The blocks playground
 * Other notes
 
 
@@ -70,7 +70,6 @@ To rebuild scratch-blocks (i.e. to make sure that the changes you make to scratc
 
 Also, make sure to read the [Scratch 3 Extension documentation](https://github.com/LLK/scratch-vm/blob/develop/docs/extensions.md) though--it is extremely helpful. 
 
-----
 
 ### If you want to know how to make your own Scratch extensions
 
@@ -180,6 +179,57 @@ Please read the section of this document called "The blocks playground" before y
 Good luck! And feel free to contact me if you have any questions (especially if I explained something poorly and/or forgot to mention something important). 
 
 
+## How to make custom field types
+
+First off, what is a field in Scratch? A field (sometimes called an argument) refers to an input field on a Scratch block, like this: 
+
+[Insert Picture of a Scratch block with the field circled]
+
+There are many different field types, from text fields to dropdown menus to angle pickers. As of when I wrote this document, Scratch supports the following field types (although it is not impossible that it also supports other field types of which I am not aware): 
+
+* Angle: [IMAGE OF ANGLE FIELD]
+* Boolean: [IMAGE OF BOOLEAN FIELD]
+* Color: [IMAGE OF COLOR FIELD]
+* Number: [IMAGE OF NUMBER FIELD]
+* String: [IMAGE OF STRING FIELD]
+* Matrix: [IMAGE OF MATRIX FIELD]
+* Note: [IMAGE OF NOTE FIELD]
+
+This list of field types can also be found in the file "scratch-vm/scr/extension-support/argument-type.js". 
+
+As of when I write this, there is no support for creating custom field types using Scratch extensions. So, if you can implement your Scratch extension without creating any additional fields, that would be for the best. 
+
+But what if you do need to create your own field type? How can you do that? I will provide you with the list of steps that I followed to set up my GAN Paint field as a new field type. Assuming that I haven't forgotten about anything, you should be able to repeat these steps yourself to set up your own custom field type. If my instructions do not work, consider meeting with someone from the Scratch team to get help if you can. 
+
+### The steps I followed to implement a new "ganpaint" field type
+
+1. I made a copy of the file "scratch-blocks/core/field_matrix.js". I named said copy "field_ganpaint.js", and saved it in the directory "scratch-blocks/core". 
+2. "scratch-blocks/core/field_matrix.js" uses the namespace "Blockly.FieldMatrix". To ensure that "scratch-blocks/core/field_ganpaint.js" uses its own unique namespace, I replaced every appearance of "Blockly.FieldMatrix" with "Blockly.FieldGANPaint" inside of the "scratch-blocks/core/field_ganpaint.js" file. 
+3. I changed the line at the end of "scratch-blocks/core/field_matrix.js", which previously read: 
+
+`Blockly.Field.register('field_matrix', Blockly.FieldMatrix);`
+
+So that it instead reads: 
+
+`Blockly.Field.register('field_ganpaint', Blockly.FieldGANPaint);`
+
+
+
+
+
+altered field_ganpaint.js
+
+
+
+
+
+
+NOT DONE
+
+
+
+
+
 ## The blocks playground
 
 As you may remember from [this tutorial](https://scratch.mit.edu/discuss/topic/336496/) from the section "How to make Scratch Extensions", if you make a change to the scratch-blocks directory and want that change to be reflected in your local version of Scratch, you'll need to: 
@@ -189,15 +239,13 @@ As you may remember from [this tutorial](https://scratch.mit.edu/discuss/topic/3
 
 This typically takes me about 3 minutes to do on my laptop, can be a pretty long time to have to wait just to see what effect your latest change to scratch-blocks had. But thankfully, the Scratch team has also created the blocks playground, which lets you view the changes you've made to scratch-blocks almost immediately. 
 
-The blocks playground is a tool that lets you test out your Scratch blocks without having to run "npm run prepublish" on scratch-blocks and without you having to load scratch-gui. To access it, just open the file 
+The blocks playground is a tool that lets you test out your Scratch blocks without having to run "npm run prepublish" in scratch-blocks, and without you having to load scratch-gui. To access it, just open the file "scratch-blocks/tests/vertical_playground.html" in your web browser. 
 
 
 
-
-## How to make custom field types
-
-First off, what is a field type? A field type is 
 NOT DONE
+
+
 
 
 
