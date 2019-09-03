@@ -204,30 +204,277 @@ But what if you do need to create your own field type? How can you do that? I wi
 ### The steps I followed to implement a new "ganpaint" field type
 
 1. I made a copy of the file "scratch-blocks/core/field_matrix.js". I named said copy "field_ganpaint.js", and saved it in the directory "scratch-blocks/core". 
+
 2. "scratch-blocks/core/field_matrix.js" uses the namespace "Blockly.FieldMatrix". To ensure that "scratch-blocks/core/field_ganpaint.js" uses its own unique namespace, I replaced every appearance of "Blockly.FieldMatrix" with "Blockly.FieldGANPaint" inside of the "scratch-blocks/core/field_ganpaint.js" file. 
+
 3. I changed the line at the end of "scratch-blocks/core/field_matrix.js", which previously read: 
 
 `Blockly.Field.register('field_matrix', Blockly.FieldMatrix);`
 
-So that it instead reads: 
+so that it instead reads: 
 
 `Blockly.Field.register('field_ganpaint', Blockly.FieldGANPaint);`
 
+This is to register your new field type. 
+
+4. I added the following code to "scratch-blocks/blocks_common/matrix.js": 
+
+```
+Blockly.Blocks['ganpaint'] = {
+  /**
+   * Block for ganpaint value.
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.jsonInit({
+      "message0": "%1",
+      "args0": [
+        {
+          "type": "field_ganpaint",
+          "name": "GANPAINT"
+        }
+      ],
+      "outputShape": Blockly.OUTPUT_SHAPE_ROUND,
+      "output": "Number",
+      "extensions": ["colours_pen"]
+    });
+  }
+};
+```
+
+5. I added the line
+
+`goog.require('Blockly.FieldGANPaint');`
+
+to the list of goog.require() statements at the top of the file "scratch-blocks/core/blockly.js". 
+
+6. OPTIONAL BUT RECOMMENDED: If you would like to use the blocks playground to work on your field type (this will save you a lot of time; see the section of this document entitled "The blocks playground" for more information), you will also need to register your field as part of a block within the blocks playground. To do so for the ganpaint field type, I made changes to the files "scratch-blocks/blocks_vertical/default_toolbox.js" and to "scratch-blocks/blocks_vertical/extensions.js", as can be seen here: [https://github.com/PTegmark/scratch-blocks/commit/3aa5429b884c49426b8f7c9bcd9120f0e7de0018](https://github.com/PTegmark/scratch-blocks/commit/3aa5429b884c49426b8f7c9bcd9120f0e7de0018). 
+
+Or, should you however have trouble viewing my changes using this link, here is a written description of what I did: 
+
+First, I added the following lines to "scratch-blocks/blocks_vertical/default_toolbox.js": 
+
+```
+    '<block type="extension_ganpaint" id="extension_ganpaint">' +
+      '<value name="GANPAINT">' +
+        '<shadow type="ganpaint">' +
+          '<field name="GANPAINT"></field>' +
+        '</shadow>' +
+      '</value>' +
+    '</block>' +
+```
+
+I added said code at line 544 of the document, so that the resulting nearby code looked like this: 
+
+```
+      '</value>' +
+    '</block>' +
+    '<block type="extension_music_reporter" id="extension_music_reporter"></block>' +
+    
+    '<block type="extension_ganpaint" id="extension_ganpaint">' +
+      '<value name="GANPAINT">' +
+        '<shadow type="ganpaint">' +
+          '<field name="GANPAINT"></field>' +
+        '</shadow>' +
+      '</value>' +
+    '</block>' +
+
+    '<block type="extension_microbit_display" id="extension_microbit_display">' +
+      '<value name="MATRIX">' +
+        '<shadow type="matrix">' +
+```
+
+And secondly, I added the following declaration at the end of the file "scratch-blocks/blocks_vertical/extensions.js": 
+
+```
+Blockly.Blocks['extension_ganpaint'] = {
+  /**
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.jsonInit({
+      "message0": "%1 %2 display %3",
+      "args0": [
+        {
+          "type": "field_image",
+          "src": Blockly.mainWorkspace.options.pathToMedia + "extensions/microbit-block-icon.svg",
+          "width": 40,
+          "height": 40
+        },
+        {
+          "type": "field_vertical_separator"
+        },
+        {
+          "type": "input_value",
+          "name": "GANPAINT"
+        },
+      ],
+      "category": Blockly.Categories.pen,
+      "extensions": ["colours_pen", "shape_statement", "scratch_extension"]
+    });
+  }
+};
+```
+
+7. I opened "scratch-vm/src/extension-support/argument-type.js", and added the new attribute “GANPAINT” to the ArgumentType object, with a value of “ganpaint”. After finishing this step, the file "scratch-vm/src/extension-support/argument-type.js" looked like this: 
+
+```
+/**
+ * Block argument types
+ * @enum {string}
+ */
+const ArgumentType = {
+    /**
+     * Numeric value with angle picker
+     */
+    ANGLE: 'angle',
+
+    /**
+     * Boolean value with hexagonal placeholder
+     */
+    BOOLEAN: 'Boolean',
+
+    /**
+     * Numeric value with color picker
+     */
+    COLOR: 'color',
+
+    /**
+     * Numeric value with text field
+     */
+    NUMBER: 'number',
+
+    /**
+     * String value with text field
+     */
+    STRING: 'string',
+
+    /**
+     * String value with matrix field
+     */
+    MATRIX: 'matrix',
+
+    /**
+     * String value with ganpaint field
+     */
+    GANPAINT: 'ganpaint',
+
+    /**
+     * MIDI note number with note picker (piano) field
+     */
+    NOTE: 'note'
+};
+
+module.exports = ArgumentType;
+```
+
+8. I opened "scratch-vm/src/engine/runtime.js", where I added the following declaration to the declaration of the const ArgumentTypeMap: 
+
+```
+map[ArgumentType.GANPAINT] = {
+        shadowType: 'ganpaint',
+        fieldType: 'GANPAINT'
+    };
+```
+
+After completing this step, ArgumentTypeMap’s declaration in "scratch-vm/src/engine/runtime.js" looked like this: 
+
+```
+/**
+ * Information used for converting Scratch argument types into scratch-blocks data.
+ * @type {object.<ArgumentType, {shadowType: string, fieldType: string}>}
+ */
+const ArgumentTypeMap = (() => {
+    const map = {};
+    map[ArgumentType.ANGLE] = {
+        shadowType: 'math_angle',
+        fieldType: 'NUM'
+    };
+    map[ArgumentType.COLOR] = {
+        shadowType: 'colour_picker'
+    };
+    map[ArgumentType.NUMBER] = {
+        shadowType: 'math_number',
+        fieldType: 'NUM'
+    };
+    map[ArgumentType.STRING] = {
+        shadowType: 'text',
+        fieldType: 'TEXT'
+    };
+    map[ArgumentType.BOOLEAN] = {
+        check: 'Boolean'
+    };
+    map[ArgumentType.MATRIX] = {
+        shadowType: 'matrix',
+        fieldType: 'MATRIX'
+    };
+    map[ArgumentType.GANPAINT] = {
+        shadowType: 'ganpaint',
+        fieldType: 'GANPAINT'
+    };
+    map[ArgumentType.NOTE] = {
+        shadowType: 'note',
+        fieldType: 'NOTE'
+    };
+    return map;
+})();
+```
+
+9. To use my new field type, I opened my extension's index.js file (scratch-vm/src/extensions/scratch3_ganpaint/index.js), and created a new block that used the ganpaint argument. Here is an abbreviated version of my index.js file after completing this step: 
+
+```
+// [IMPORT STATEMENTS HERE]
 
 
+/**
+ * Class for the GAN Paint block in Scratch 3.0. 
+ */
+class Scratch3GANPaintBlocks {
 
 
-altered field_ganpaint.js
+    // [OTHER STUFF HERE]
 
 
+    /**
+     * @returns {object} metadata for this extension and its blocks.
+     */
+    getInfo () {
+        return {
+            id: Scratch3GANPaintBlocks.EXTENSION_ID,
+            name: Scratch3GANPaintBlocks.EXTENSION_NAME,
+            showStatusButton: true,
+            blocks: [
+                {
+                    opcode: 'saveGANPaintImage',
+                    text: formatMessage({
+                        id: 'ganpaint.saveGANPaintImage',
+                        default: 'save [EDITOR] as a costume',
+                        description: 'edit your image with the GAN Paint editor, and then save the image as a costume'
+                    }),
+                    blockType: BlockType.COMMAND,
+                    arguments: {
+                        EDITOR: {
+                            type: ArgumentType.GANPAINT
+                        }
+                    }
+                }
+            ]
+        };
+    }
 
 
+    // [OTHER STUFF HERE]
 
 
-NOT DONE
+}
 
+module.exports = Scratch3GANPaintBlocks;
 
+```
 
+10. And of course, I altered the contents of my "scratch-blocks/core/field_ganpaint.js" file to make my new ganpaint field type suit my needs. 
+
+11. Assuming that I didn't forget anything (my apologies if I did), those were all of the necessary steps it took for me to create my new ganpaint field type! Hopefully you can follow the same steps to create a field type of your own should you need one. 
 
 
 ## The blocks playground
@@ -244,6 +491,7 @@ The blocks playground is a tool that lets you test out your Scratch blocks witho
 
 
 NOT DONE
+
 
 
 
