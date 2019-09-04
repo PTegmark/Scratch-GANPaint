@@ -15,7 +15,7 @@
 ## Introduction
 Hi, I'm Philip, the UROP who was working on this project during summer 2019. The project is effectively to take [GAN Paint](http://gandissect.res.ibm.com/ganpaint.html?project=churchoutdoor&layer=layer4) and put it in a Scratch block. I got a lot of the work done, but there is still more to do, which I will outline here. I will also explain how to get started making Scratch extensions in the first place, and some other relevant information. If you have any questions about anything, feel free to contact me at my Kerberos email (ptegmark at mit dot-edu), and I'll be happy to help. 
 
-If you are going to work on completing the GAN Paint extension, please go through all sections of this document, with the exception of "How to make custom field types". If, however, you're only here to learn how to make Scratch extensions, you need only go through the sections "What is Scratch?" and "How to make Scratch extensions", as well as "The blocks playground" and "How to make custom field types" if you plan on creating your own field type(s) as well. 
+If you are going to work on completing the GAN Paint extension, please go through all sections of this document, with the exception of "How to make custom field types" (just make sure that you know what a field type is). If, however, you're only here to learn how to make Scratch extensions, you need only go through the sections "What is Scratch?" and "How to make Scratch extensions", as well as "The blocks playground" and "How to make custom field types" if you plan on creating your own field type(s) as well. 
 
 Also, a quick note: as you are probably aware, when you follow up something in quotes with a punctuation mark, the English language dictates that the punctuation mark must also be included within the quotation marks, even if said punctuation mark was not part of the quote to begin with. For example, if I wanted to tell you that "orange" was the only word that my friend said, the English language dictates that I write: 
 
@@ -156,11 +156,7 @@ What The Block Still Needs To Do:
 
 * Continuing off of the previous point, the ganpaint field will also have to get a response from the GAN Paint server. This response should contain the new main image, which the ganpaint field will then display as the new main image. The function "Blockly.FieldGANPaint.prototype.setValue" (in the file "scratch-blocks/core/field_ganpaint.js") might be of use in displaying the image from the GAN Paint server as the new main image, although you will need to modify the function first to make it better suit your needs. 
 
-* When activated, the GAN Paint block should (it does not currently do this) save its main image as either a sprite costume or as a Stage backdrop. To accomplish this, you will need to add code to the GAN Paint block's opcode (i.e. the function "saveGANPaintImage" within the file "scratch-vm/src/extensions/scratch3_ganpaint/index.js"). Scratch does let the user import an external image to use as a costume--if you can figure out what JavaScript function it is that does this, you can probably use that function to save the main GAN Paint image as a costume or backdrop. 
-
-
-[Where should they look for this function? What should they do about your commented out code in index.js?]
-
+* When activated, the GAN Paint block should (it does not currently do this) save its main image as either a sprite costume or as a Stage backdrop. To accomplish this, you will need to add code to the GAN Paint block's opcode (i.e. the function "saveGANPaintImage" within the file "scratch-vm/src/extensions/scratch3_ganpaint/index.js"). Scratch does let its users import external images to be used as a costumes--if you can figure out what JavaScript function it is that does this, you can probably use that function to save the main GAN Paint image as a costume or backdrop. I don't know what function it is though, so you'll have to find it. Or save the main GAN Paint image in some other way. Also, feel free to disregard my commented-out code in the saveGANPaintImage function in the file "scratch-vm/src/extensions/scratch3_ganpaint/index.js". 
 
 * The SVG images that I have used to create the GAN Paint field don't display properly in Safari. In Safari, you just get this instead: 
 
@@ -183,7 +179,7 @@ Good luck! And feel free to contact me if you have any questions (especially if 
 
 First off, what is a field in Scratch? A field (sometimes called an argument) refers to an input field on a Scratch block, like this: 
 
-[Insert Picture of a Scratch block with the field circled]
+![Scratch block with the field circled](ScratchFieldExample.png)
 
 There are many different field types, from text fields to dropdown menus to angle pickers. As of when I wrote this document, Scratch supports the following field types (although it is not impossible that it also supports other field types of which I am not aware): 
 
