@@ -168,7 +168,7 @@ What The Block Still Needs To Do:
 
 This needs to be fixed. You will need the GAN Paint extension to function properly in Firefox, Chrome, Safari, and Microsoft Edge (possibly also Internet Explorer and Opera--ask whoever is in charge (presumably Katherine Gallagher) about what browsers the GAN Paint extension needs to function properly in). Right now, the SVG images in question do display properly in Firefox though, I can guarantee that much. 
 
-You will also need to ensure that the GAN Paint extension also functions properly in Google Chrome and Microsoft Edge, and you might also want it to work in Internet Explorer and Opera as well. 
+I have not tested the GAN Paint extension in Chrome, Microsoft Edge, Internet Explorer, or Opera, so I don't know how well the extension currently works in those browsers. 
 
 * On the [GAN Paint website](http://gandissect.res.ibm.com/ganpaint.html?project=churchoutdoor&layer=layer4), the main image is visibly shaded as the user drags their mouse over it. Currently, however, the ganpaint field in Scratch does not do so. So, if you have time, this should be implemented in the ganpaint field. To accomplish this, you will probably need to add code to the functions "Blockly.FieldGANPaint.prototype.onMouseDown" and "Blockly.FieldGANPaint.prototype.onMouseMove" in the file "scratch-blocks/core/field-ganpaint.js". 
 
@@ -549,14 +549,18 @@ My modified versions of the scratch-gui, scratch-vm, and scratch-blocks reposito
 
 
 
-
+TODO: 
 npm start and npm run prepublish
 
 index.jsx help link should be changed
 
-add in the appropriate pictures for "How to make custom field types" section
+add in missing pictures, and address any in-line notes
 
-This section explains how to make your own Scratch extensions (irrespective of whether or not you'll be working on the GAN Paint extension). If you are going to be working on the GAN Paint extension, just download my versions of the scratch-gui, scratch-vm, and scratch-blocks directories instead, and save them in the same folder on your computer. My versions of the directories can be found at: 
+revise this document
+
+add links to contents that link to each section
+
+
 
 
 
