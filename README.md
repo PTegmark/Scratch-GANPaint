@@ -168,11 +168,7 @@ What The Block Still Needs To Do:
 
 This needs to be fixed. You will need the GAN Paint extension to function properly in Firefox, Chrome, Safari, and Microsoft Edge (possibly also Internet Explorer and Opera--ask whoever is in charge (presumably Katherine Gallagher) about what browsers the GAN Paint extension needs to function properly in). Right now, the SVG images in question do display properly in Firefox though, I can guarantee that much. 
 
-
-
-[What about Chrome and Edge?]
-
-
+You will also need to ensure that the GAN Paint extension also functions properly in Google Chrome and Microsoft Edge, and you might also want it to work in Internet Explorer and Opera as well. 
 
 * On the [GAN Paint website](http://gandissect.res.ibm.com/ganpaint.html?project=churchoutdoor&layer=layer4), the main image is visibly shaded as the user drags their mouse over it. Currently, however, the ganpaint field in Scratch does not do so. So, if you have time, this should be implemented in the ganpaint field. To accomplish this, you will probably need to add code to the functions "Blockly.FieldGANPaint.prototype.onMouseDown" and "Blockly.FieldGANPaint.prototype.onMouseMove" in the file "scratch-blocks/core/field-ganpaint.js". 
 
@@ -191,14 +187,37 @@ First off, what is a field in Scratch? A field (sometimes called an argument) re
 
 There are many different field types, from text fields to dropdown menus to angle pickers. As of when I wrote this document, Scratch supports the following field types (although it is not impossible that it also supports other field types of which I am not aware): 
 
-* Angle: ![Image of an Angle Field](AngleField.png)
-* Boolean: ![Image of a Boolean Field](BooleanField.png)
-* Color: ![Image of a Color Field](ColorField.png)
-* Number: ![Image of a Number Field](NumberField.png)
-* String: ![Image of a String Field](StringField.png)
-* Matrix: ![Image of a Matrix Field](MatrixField.png)
-* Note: ![Image of a Note Field](NoteField.png)
-* Dropdown Menu: ![Image of a Dropdown Menu](DropdownMenu.png)
+* Angle: 
+
+![Image of an Angle Field](AngleField.png)
+
+* Boolean: 
+
+![Image of a Boolean Field](BooleanField.png)
+
+* Color: 
+
+![Image of a Color Field](ColorField.png)
+
+* Number: 
+
+![Image of a Number Field](NumberField.png)
+
+* String: 
+
+![Image of a String Field](StringField.png)
+
+* Matrix: 
+
+![Image of a Matrix Field](MatrixField.png)
+
+* Note: 
+
+![Image of a Note Field](NoteField.png)
+
+* Dropdown Menu: 
+
+![Image of a Dropdown Menu](DropdownMenu.png)
 
 This list of field types (not including the dropdown menu) can also be found in the file "scratch-vm/scr/extension-support/argument-type.js". 
 
