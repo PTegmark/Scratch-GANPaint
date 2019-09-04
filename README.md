@@ -469,7 +469,6 @@ class Scratch3GANPaintBlocks {
 }
 
 module.exports = Scratch3GANPaintBlocks;
-
 ```
 
 10. And of course, I altered the contents of my "scratch-blocks/core/field_ganpaint.js" file to make my new ganpaint field type suit my needs. 
@@ -479,22 +478,16 @@ module.exports = Scratch3GANPaintBlocks;
 
 ## The blocks playground
 
-As you may remember from [this tutorial](https://scratch.mit.edu/discuss/topic/336496/) from the section "How to make Scratch Extensions", if you make a change to the scratch-blocks directory and want that change to be reflected in your local version of Scratch, you'll need to: 
+As you may remember from [this tutorial](https://scratch.mit.edu/discuss/topic/336496/) from the section "How to make Scratch extensions", if you make a change to the scratch-blocks directory and want that change to be reflected in the Scratch GUI, you'll need to: 
 
-* 1: Open the terminal and run the command "npm run prepublish" within the scratch-blocks directory. 
-* 2: Also in the terminal, run the command "npm start" within the scratch-gui directory. 
+* 1: Open the terminal, cd into the scratch-blocks directory, and run the command "npm run prepublish" (side note: for this command to work properly, you'll need to be using Python 2 on your computer). 
+* 2: Also in the terminal, cd into the scratch-gui directory, and run the command "npm start". 
 
-This typically takes me about 3 minutes to do on my laptop, can be a pretty long time to have to wait just to see what effect your latest change to scratch-blocks had. But thankfully, the Scratch team has also created the blocks playground, which lets you view the changes you've made to scratch-blocks almost immediately. 
+Now, running these two commands typically takes me about 3 minutes to do on my laptop, which can be a pretty long time to have to wait. But thankfully, there is another, faster way to see the effect of your changes to scratch-blocks: using the blocks playground. To access the blocks playground, just open the file "scratch-blocks/tests/vertical_playground.html" in your web browser. You should see this: 
 
-The blocks playground is a tool that lets you test out your Scratch blocks without having to run "npm run prepublish" in scratch-blocks, and without you having to load scratch-gui. To access it, just open the file "scratch-blocks/tests/vertical_playground.html" in your web browser. 
+[IMAGE OF BLOCKS PLAYGROUND]
 
-
-
-NOT DONE
-
-
-
-
+The blocks playground loads only Scratch's blocks and nothing else, which lets you test the changes you've made to scratch-blocks without having to wait for "npm run prepublish" and "scratch-gui" to run. If you're working on the GAN Paint extension, a GAN Paint block is already included for you to use. If you need to add your own new block to the blocks playground, or if you need to modify an existing block in the blocks playground, you'll need to make changes to the files "scratch-blocks/blocks_vertical/default_toolbox.js" and "scratch-blocks/blocks_vertical/extensions.js". For more information, see step 6 of the list of steps for implementing the ganpaint field type in the section "How to make custom field types". 
 
 
 
@@ -502,9 +495,33 @@ NOT DONE
 
 This section will contain various potentially useful pieces of information. 
 
-[Include list of resources (including stuff like MDN Docs and W3 Schools, Inspect Element, console.log, Argument Types and Block Types)]
+### A list of potentially useful hyperlinks from previous sections: 
 
-[Include List of All Hyperlinks from previous sections]
+* GAN Paint: [http://gandissect.res.ibm.com/ganpaint.html?project=churchoutdoor&layer=layer4](http://gandissect.res.ibm.com/ganpaint.html?project=churchoutdoor&layer=layer4)
+* Scratch Website: [scratch.mit.edu](scratch.mit.edu)
+* Scratch Online Editor Repositories: [https://github.com/LLK/](https://github.com/LLK/)
+* Scratch 3 Extensions Documentation: [https://github.com/LLK/scratch-vm/blob/develop/docs/extensions.md](https://github.com/LLK/scratch-vm/blob/develop/docs/extensions.md)
+* Tutorial for Scratch Extension Set-Up: [https://scratch.mit.edu/discuss/topic/336496/](https://scratch.mit.edu/discuss/topic/336496/)
+* Tutorial on how to make a very basic Scratch extension (has some issues): [https://medium.com/@hiroyuki.osaki/how-to-develop-your-own-block-for-scratch-3-0-1b5892026421](https://medium.com/@hiroyuki.osaki/how-to-develop-your-own-block-for-scratch-3-0-1b5892026421)
+
+My modified versions of the scratch-gui, scratch-vm, and scratch-blocks repositories: 
+
+* scratch-gui: [https://github.com/PTegmark/scratch-gui](https://github.com/PTegmark/scratch-gui)
+* scratch-vm: [https://github.com/PTegmark/scratch-vm](https://github.com/PTegmark/scratch-vm)
+* scratch-blocks: [https://github.com/PTegmark/scratch-blocks](https://github.com/PTegmark/scratch-blocks)
+
+
+### Other helpful resources and tools: 
+
+* Your supervisor! 
+* Me (hopefully)! Feel free to contact me if you need help or clarity regarding something that I have done. See the "Introduction" section for my contact information. 
+* [MDN Web Docs](https://developer.mozilla.org/en-US/) and [W3Schools](https://www.w3schools.com/) are both very helpful resources with a lot of useful information about everything web development-related. Of these two, W3Schools' explanations tend to require a little bit less knowledge to understand. But if it's an in-depth answer that you need, MDN Web Docs is the way to go. 
+* [Stack Overflow](https://stackoverflow.com/) and other online forums! 
+* Search engines! I would recommend entering your query into your search engine, and then keeping an eye out for Stack Overflow, MDN Web Docs, and W3Schools links in the search results. 
+* [Inspect Element](https://www.lifewire.com/get-inspect-element-tool-for-browser-756549)
+* [Print statements!](https://developer.mozilla.org/en-US/docs/Web/API/Console/log)
+* For lists of the different Scratch block types and field types, see the files "scratch-vm/src/extension-support/block-type.js" and "scratch-vm/src/extension-support/argument-type.js", respectively. 
+
 
 
 
@@ -514,6 +531,8 @@ This section will contain various potentially useful pieces of information.
 npm start and npm run prepublish
 
 index.jsx help link should be changed
+
+add in the appropriate pictures for "How to make custom field types" section
 
 This section explains how to make your own Scratch extensions (irrespective of whether or not you'll be working on the GAN Paint extension). If you are going to be working on the GAN Paint extension, just download my versions of the scratch-gui, scratch-vm, and scratch-blocks directories instead, and save them in the same folder on your computer. My versions of the directories can be found at: 
 
