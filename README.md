@@ -168,7 +168,11 @@ What The Block Still Needs To Do:
 
 This needs to be fixed. You will need the GAN Paint extension to function properly in Firefox, Chrome, Safari, and Microsoft Edge (possibly also Internet Explorer and Opera--ask whoever is in charge (presumably Katherine Gallagher) about what browsers the GAN Paint extension needs to function properly in). Right now, the SVG images in question do display properly in Firefox though, I can guarantee that much. 
 
+
+
 [What about Chrome and Edge?]
+
+
 
 * On the [GAN Paint website](http://gandissect.res.ibm.com/ganpaint.html?project=churchoutdoor&layer=layer4), the main image is visibly shaded as the user drags their mouse over it. Currently, however, the ganpaint field in Scratch does not do so. So, if you have time, this should be implemented in the ganpaint field. To accomplish this, you will probably need to add code to the functions "Blockly.FieldGANPaint.prototype.onMouseDown" and "Blockly.FieldGANPaint.prototype.onMouseMove" in the file "scratch-blocks/core/field-ganpaint.js". 
 
@@ -187,15 +191,16 @@ First off, what is a field in Scratch? A field (sometimes called an argument) re
 
 There are many different field types, from text fields to dropdown menus to angle pickers. As of when I wrote this document, Scratch supports the following field types (although it is not impossible that it also supports other field types of which I am not aware): 
 
-* Angle: [IMAGE OF ANGLE FIELD]
-* Boolean: [IMAGE OF BOOLEAN FIELD]
-* Color: [IMAGE OF COLOR FIELD]
-* Number: [IMAGE OF NUMBER FIELD]
-* String: [IMAGE OF STRING FIELD]
-* Matrix: [IMAGE OF MATRIX FIELD]
-* Note: [IMAGE OF NOTE FIELD]
+* Angle: ![Image of an Angle Field](AngleField.png)
+* Boolean: ![Image of a Boolean Field](BooleanField.png)
+* Color: ![Image of a Color Field](ColorField.png)
+* Number: ![Image of a Number Field](NumberField.png)
+* String: ![Image of a String Field](StringField.png)
+* Matrix: ![Image of a Matrix Field](MatrixField.png)
+* Note: ![Image of a Note Field](NoteField.png)
+* Dropdown Menu: ![Image of a Dropdown Menu](DropdownMenu.png)
 
-This list of field types can also be found in the file "scratch-vm/scr/extension-support/argument-type.js". 
+This list of field types (not including the dropdown menu) can also be found in the file "scratch-vm/scr/extension-support/argument-type.js". 
 
 As of when I write this, there is no support for creating custom field types using Scratch extensions. So, if you can implement your Scratch extension without creating any additional fields, that would be for the best. 
 
@@ -485,7 +490,7 @@ As you may remember from [this tutorial](https://scratch.mit.edu/discuss/topic/3
 
 Now, running these two commands typically takes me about 3 minutes to do on my laptop, which can be a pretty long time to have to wait. But thankfully, there is another, faster way to see the effect of your changes to scratch-blocks: using the blocks playground. To access the blocks playground, just open the file "scratch-blocks/tests/vertical_playground.html" in your web browser. You should see this: 
 
-[IMAGE OF BLOCKS PLAYGROUND]
+![Image of Blocks Playground](BlocksPlayground.png)
 
 The blocks playground loads only Scratch's blocks and nothing else, which lets you test the changes you've made to scratch-blocks without having to wait for "npm run prepublish" and "scratch-gui" to run. If you're working on the GAN Paint extension, a GAN Paint block is already included for you to use. If you need to add your own new block to the blocks playground, or if you need to modify an existing block in the blocks playground, you'll need to make changes to the files "scratch-blocks/blocks_vertical/default_toolbox.js" and "scratch-blocks/blocks_vertical/extensions.js". For more information, see step 6 of the list of steps for implementing the ganpaint field type in the section "How to make custom field types". 
 
@@ -493,13 +498,11 @@ The blocks playground loads only Scratch's blocks and nothing else, which lets y
 
 ## Other notes
 
-This section will contain various potentially useful pieces of information. 
-
 ### A list of potentially useful hyperlinks from previous sections: 
 
 * GAN Paint: [http://gandissect.res.ibm.com/ganpaint.html?project=churchoutdoor&layer=layer4](http://gandissect.res.ibm.com/ganpaint.html?project=churchoutdoor&layer=layer4)
 * Scratch Website: [scratch.mit.edu](scratch.mit.edu)
-* Scratch Online Editor Repositories: [https://github.com/LLK/](https://github.com/LLK/)
+* Scratch Online Editor GitHub Repositories: [https://github.com/LLK/](https://github.com/LLK/)
 * Scratch 3 Extensions Documentation: [https://github.com/LLK/scratch-vm/blob/develop/docs/extensions.md](https://github.com/LLK/scratch-vm/blob/develop/docs/extensions.md)
 * Tutorial for Scratch Extension Set-Up: [https://scratch.mit.edu/discuss/topic/336496/](https://scratch.mit.edu/discuss/topic/336496/)
 * Tutorial on how to make a very basic Scratch extension (has some issues): [https://medium.com/@hiroyuki.osaki/how-to-develop-your-own-block-for-scratch-3-0-1b5892026421](https://medium.com/@hiroyuki.osaki/how-to-develop-your-own-block-for-scratch-3-0-1b5892026421)
@@ -514,13 +517,13 @@ My modified versions of the scratch-gui, scratch-vm, and scratch-blocks reposito
 ### Other helpful resources and tools: 
 
 * Your supervisor! 
-* Me (hopefully)! Feel free to contact me if you need help or clarity regarding something that I have done. See the "Introduction" section for my contact information. 
+* Me (well, I hope I'm helpful, anyway)! Feel free to contact me if you need help or clarity regarding something that I have done. See the "Introduction" section for my contact information. 
 * [MDN Web Docs](https://developer.mozilla.org/en-US/) and [W3Schools](https://www.w3schools.com/) are both very helpful resources with a lot of useful information about everything web development-related. Of these two, W3Schools' explanations tend to require a little bit less knowledge to understand. But if it's an in-depth answer that you need, MDN Web Docs is the way to go. 
 * [Stack Overflow](https://stackoverflow.com/) and other online forums! 
 * Search engines! I would recommend entering your query into your search engine, and then keeping an eye out for Stack Overflow, MDN Web Docs, and W3Schools links in the search results. 
-* [Inspect Element](https://www.lifewire.com/get-inspect-element-tool-for-browser-756549)
-* [Print statements!](https://developer.mozilla.org/en-US/docs/Web/API/Console/log)
-* For lists of the different Scratch block types and field types, see the files "scratch-vm/src/extension-support/block-type.js" and "scratch-vm/src/extension-support/argument-type.js", respectively. 
+* [Inspect Element! ](https://www.lifewire.com/get-inspect-element-tool-for-browser-756549)
+* [Print statements! ](https://developer.mozilla.org/en-US/docs/Web/API/Console/log)
+* For a list of the different Scratch block types, see the file "scratch-vm/src/extension-support/block-type.js". For a list of most (this list doesn't include dropdown menus) of the different Scratch field types, see the file "scratch-vm/src/extension-support/argument-type.js". 
 
 
 
@@ -539,7 +542,5 @@ This section explains how to make your own Scratch extensions (irrespective of w
 
 
 UNFINISHED
-
-
 
 
