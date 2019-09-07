@@ -15,19 +15,21 @@
 ## Introduction
 Hi, I'm Philip, the UROP who was working on this project during summer 2019. The project is effectively to take [GAN Paint](http://gandissect.res.ibm.com/ganpaint.html?project=churchoutdoor&layer=layer4) and put it in a Scratch block. I got a lot of the work done, but there is still more to do, which I will outline here. I will also explain how to get started making Scratch extensions in the first place, and some other relevant information. If you have any questions about anything, feel free to contact me at my Kerberos email (ptegmark at mit dot-edu), and I'll be happy to help. 
 
-If you are going to work on completing the GAN Paint extension, please go through all sections of this document, with the exception of "How to make custom field types" (just make sure that you know what a field type is). If, however, you're only here to learn how to make Scratch extensions, you need only go through the sections "What is Scratch?" and "How to make Scratch extensions", as well as "The blocks playground" and "How to make custom field types" if you plan on creating your own field type(s) as well. 
+If you are going to work on completing the GAN Paint extension, please go through all sections of this document, with the exception of "How to make custom field types" (for that section, just read up until and including the image that says "This is a field type", which should take you all of 20 seconds). 
 
-Also, a quick note: as you are probably aware, when you follow up something in quotes with a punctuation mark, the English language dictates that the punctuation mark must also be included within the quotation marks, even if said punctuation mark was not part of the quote to begin with. For example, if I wanted to tell you that "orange" was the only word that my friend said, the English language dictates that I write: 
+If, however, you're only here to learn how to make Scratch extensions, you need only go through the sections "What is Scratch?" and "How to make Scratch extensions". Also go through "How to make custom field types" and "The blocks playground" if you plan on creating your own field type(s) as well. 
+
+Also, a quick grammar note: as you are probably aware, when you follow up something in quotes with a punctuation mark, the English language dictates that the punctuation mark must also be included within the quotation marks, even if said punctuation mark was not part of the quote to begin with. For example, if I wanted to tell you that "orange" was the only word that my friend said, the English language dictates that I write: 
 
 >My friend only said the word "orange." 
 
 with the period included inside the quotation marks, even though the period is not part of what I am actually quoting. 
 
-For clarity, I will be disregarding this rule, and keeping all punctuation that is not part of the quote outside of the quotation marks. So, for example, if "field_ganpaint.js" is a file that I want you to open, I will type: 
+However, for clarity, I will be disregarding this rule, and keeping all punctuation that is not part of the quote outside of the quotation marks. So, for example, if "field_ganpaint.js" is a file that I want you to open, I will write: 
 
 >Please open "field_matrix.js". 
 
-instead of typing: 
+instead of writing: 
 
 >Please open "field_matrix.js." 
 
@@ -35,12 +37,12 @@ which is what English grammar would dictate that I do.
 
 
 ## What is GAN Paint? 
-[GAN Paint](http://gandissect.res.ibm.com/ganpaint.html?project=churchoutdoor&layer=layer4) is a tool that has used GANs (Generative Adversarial Networks) to generate 16 photorealistic images of churches. By using the various brushes provided, and then shading in the image, the you can tell GAN Paint to add or remove certain features to/from different parts of the image, and GAN Paint will alter the image accordingly. I recommend that you play around with it for a few minutes to see what I'm talking about. 
+[GAN Paint](http://gandissect.res.ibm.com/ganpaint.html?project=churchoutdoor&layer=layer4) is a tool that has used GANs (Generative Adversarial Networks) to generate 16 photorealistic images of churches. By using the various brushes provided, and then dragging your mouse across the image, you can tell GAN Paint to add or remove certain features to/from different parts of the image, and GAN Paint will alter the image accordingly. I recommend that you play around with GAN Paint for a few minutes to see what I'm talking about. 
 
 
 
 ## What is Scratch? 
-I would describe Scratch as a programming language for kids, developed by the Lifelong Kindergarten Group at the MIT Media Lab. It uses blocks instead of lines of code (which is nice because that eliminates syntax errors), and is overall more intuitive to understand than most other programming languages. You can make all sorts of projects in Scratch, and then share them on the [Scratch website](scratch.mit.edu). Scratch can do most of what other programming languages can do, although a Scratch file can only be run inside the Scratch editor. Scratch's other downsides are that it is very slow at math when compared to other programming languages, and that (as far as I am aware) it cannot read or write to outside files. 
+I would describe Scratch as a programming language for kids, developed by the Lifelong Kindergarten Group at the MIT Media Lab. It uses blocks instead of lines of code (which is nice because that eliminates syntax errors), and is overall more intuitive to understand than most other programming languages. You can make all sorts of projects in Scratch, and then share them on the [Scratch website](scratch.mit.edu). Scratch can do most of what other programming languages can do, although a Scratch file can only be run inside the Scratch editor. Scratch's other downsides are that it is very slow at math when compared to other programming languages, and that (as far as I am aware) it cannot read from or write to outside files. 
 
 For more information, check out Scratch's About page [here](https://scratch.mit.edu/about). 
 
@@ -48,7 +50,7 @@ Or try using Scratch [here](https://scratch.mit.edu/projects/editor/?tutorial=ge
 
 As of when I wrote this, the latest version of Scratch (and the one that we'll be working with) is Scratch 3. Scratch is written primarily in JavaScript, and has both an [online editor](https://scratch.mit.edu/projects/editor/?tutorial=getStarted) and an [offline editor](https://scratch.mit.edu/download/). The repositories for the code to Scratch's online editor are publicly available on GitHub, at [https://github.com/LLK/](https://github.com/LLK/). 
 
-Scratch has various different types of blocks. They are: Motion, Looks, Sound, Events, Control, Sensing, Operators, Variables, and My Blocks. However, you can make extensions to Scratch. An extension adds a new set of blocks with their own functionality. For example, the Translate extension lets you use Google Translate to translate text into different languages. 
+Scratch has various different types of blocks. They are: Motion, Looks, Sound, Events, Control, Sensing, Operators, Variables, and My Blocks. However, you can also load (or make) extensions to Scratch. An extension adds a new set of blocks with their own functionality. For example, the Translate extension lets you use Google Translate to translate text into different languages. To load an extension, click on the "Add Extension" button in the bottom-left corner of the Scratch GUI. 
 
 Only 11 extensions are officially supported by Scratch, so any extensions you make (unless later incorporated into Scratch by the Scratch team) can only be used on your computer. For more information, see the [Scratch 3 Extensions Documentation](https://github.com/LLK/scratch-vm/blob/develop/docs/extensions.md). 
 
@@ -64,42 +66,51 @@ First make sure to install Git and npm (Node Package Manager) on your computer, 
 * scratch-vm: [https://github.com/PTegmark/scratch-vm](https://github.com/PTegmark/scratch-vm)
 * scratch-blocks: [https://github.com/PTegmark/scratch-blocks](https://github.com/PTegmark/scratch-blocks)
 
-To run the extension, open the terminal, cd into the scratch-gui directory, and enter the command "npm start". 
+You may or may not also have to download my version of the scratch-render repository, even though I didn't make any important changes to it (all I did was run the commands "npm install" and "npm link" on it). If you wind up getting a scratch-render-related error message when you try loading the Scratch GUI, maybe try also downloading: 
 
-To rebuild scratch-blocks (i.e. to make sure that the changes you make to scratch-blocks get expressed), you will need to open the terminal, cd into the scratch-blocks directory, and enter the command "npm run prepublish". This will need to be done before you execute "npm start" within scratch-gui for your changes to be expressed. Also, to execute "npm run prepublish" in scratch-blocks, you will need to be using Python 2 on your computer. This may require you setting up a virtual environment on your computer to run Python 2. If you don't know how to do this, talk to your supervisor, or try to figure it out yourself. 
+* scratch-render: [https://github.com/PTegmark/scratch-render](https://github.com/PTegmark/scratch-render)
 
-Also, make sure to read the [Scratch 3 Extension documentation](https://github.com/LLK/scratch-vm/blob/develop/docs/extensions.md) though--it is extremely helpful. 
+and saving it in the same folder as the other 3 repositories. 
+
+Now, to run my modified version of Scratch, open the terminal, cd into the scratch-gui directory, and enter the command "npm start". Once everything finishes compiling, go to "http://localhost:8601/" in your web browser, and you should see my modified version of Scratch! From there, to load the GAN Paint extension, click on the "Add Extension" button in the bottom left corner of the Scratch GUI, scroll down to the extension labeled "GAN Paint", and click on it. 
+
+If the "npm start" command isn't working, maybe try also downloading my version of the scratch-render repository as described above. If things still don't work after that, then: ask your advisor for help, try to figure the problem out yourself, and/or see if [this tutorial](https://scratch.mit.edu/discuss/topic/336496/) can help you. 
+
+Whenever you need to rebuild scratch-blocks (i.e. make sure that the changes you make to scratch-blocks get expressed), you will need to open the terminal, cd into the scratch-blocks directory, and enter the command "npm run prepublish". Wait until this has finished executing, then run the command "npm start" within scratch-gui to open the Scratch GUI again. Also, to execute the command "npm run prepublish" in scratch-blocks, you will need to be using Python 2 on your computer. This may require you setting up a virtual environment on your computer to run Python 2. If you don't know how to do this, talk to your supervisor, or try to figure it out yourself. 
+
+Also, make sure to read the [Scratch 3 Extension documentation](https://github.com/LLK/scratch-vm/blob/develop/docs/extensions.md)--it is extremely helpful. 
 
 
 ### If you want to know how to make your own Scratch extensions
 
-To set up everything you need to make Scratch extensions, follow the instructions given in [this tutorial](https://scratch.mit.edu/discuss/topic/336496/). Before you begin the tutorial, however, you will need to make sure that you have both Git and npm (Node Package Manager) installed on your computer. If they are not installed and you need help installing them, consult your supervisor for help, or try to figure it out yourself. 
-
-Also, in order to be able to use the "npm run prepublish" command listed in step 8 of the tutorial, you will need to be using Python 2 on your computer. This may require you setting up a virtual environment on your computer to run Python 2. If you don't know how to do this, talk to your supervisor, or try to figure it out yourself. <br/><br/>
+To set up everything you need to make Scratch extensions, follow the instructions given in [this tutorial](https://scratch.mit.edu/discuss/topic/336496/). Before you begin the tutorial, however, you will need to make sure that you have both Git and npm (Node Package Manager) installed on your computer. If they are not installed and you need help installing them, consult your supervisor for help, or try to figure it out yourself. Also, in order to be able to use the "npm run prepublish" command listed in step 8 of the tutorial, you will need to be running Python 2 on your computer. This may require you setting up a virtual environment on your computer to run Python 2. If you don't know how to do this, talk to your supervisor, or try to figure it out yourself. <br/><br/>
 
 
-Once you've successfully completed the tutorial, you can start making extensions! I highly recommend that you read through the Scratch 3 Extension documentation [here](https://github.com/LLK/scratch-vm/blob/develop/docs/extensions.md). 
+Once you've successfully completed the tutorial, you can start making extensions! For learning how to do this, absolutely 100% read through the Scratch 3 Extension documentation [here](https://github.com/LLK/scratch-vm/blob/develop/docs/extensions.md). 
 
-If you want, there's also this tutorial on how to make a very basic Scratch extension [here](https://medium.com/@hiroyuki.osaki/how-to-develop-your-own-block-for-scratch-3-0-1b5892026421). It's not the best tutorial though, since the author omits a few steps. 
+If you want, there's also a tutorial on how to make a very basic Scratch extension [here](https://medium.com/@hiroyuki.osaki/how-to-develop-your-own-block-for-scratch-3-0-1b5892026421). It's not the best tutorial though, since the author omits a few steps. If you would like to use this tutorial, keep reading, otherwise, skip ahead to the last paragraph of this section. 
 
-If you do use the tutorial, skip to the part called "Method #2. On your development environment". You should have also already done step 1 when you completed the previous tutorial, so you can skip step 1 too. 
+If you do use the tutorial, skip to the section of the tutorial labeled "Method #2. On your development environment". Within this section, skip step 1, since you should have already done that when you completed the previous tutorial. 
 
-Some information that the author of the tutorial omitted: 
+Some information that the author of this tutorial omitted: 
 
 * The first 3 code snippets and trees that he shows (namely block3.tree, index.js, and extension-manager.js) are all within the scratch-vm directory. 
+
 * The next 2 code snippets/trees that he shows (namely index.jsx and block7.tree) are within the scratch-gui directory. 
+
 * Add this code: 
 ```
 import newBlockImageURL from './newblocks.png';
 import newBlockButtonImageURL from './newblocks-small.png';
 ```
-to the list of import statements at the top of scratch-gui/src/lib/libraries/extensions/index.jsx. 
+to the list of import statements at the top of "scratch-gui/src/lib/libraries/extensions/index.jsx". 
 
 * Ignore the next code snippet (block8.sh). In the terminal, cd into the scratch-gui directory, and then type "npm start" (without the quotation marks). 
-* In case you're new to JavaScript, all that the function console.log() does is print its argument to the console. It's JavaScript's version of the print statement. 
+
+* In case you're new to JavaScript, all that the function console.log() does is print its argument to the console. It's JavaScript's version of the print statement. <br/><br/>
 
 
-Alright, provided that you're not planning on making your own field types, you should now be set up to make your own Scratch extensions, and be acquainted with how to do so. If you do need to create your own field types (or if you don't know what that means and would like to know), see the section below on how to do so. While the GAN Paint extension does use a new field type, I already set that up, so you shouldn't have to worry too much about it. 
+Alright, provided that you're not planning on making your own field types, you should now be set up to make your own Scratch extensions, and be acquainted with how to do so. If you do need to create your own field types (or if you don't know what "field type" means and would like to know), see the section of this document called "How to make custom field types". 
 
 
 ## The current state of the GAN Paint block
@@ -109,6 +120,12 @@ The goal of my project was to make a Scratch block that would let you use the GA
 * scratch-vm: [https://github.com/PTegmark/scratch-vm](https://github.com/PTegmark/scratch-vm)
 * scratch-blocks: [https://github.com/PTegmark/scratch-blocks](https://github.com/PTegmark/scratch-blocks)
 
+Also, like I mentioned in the "How to make Scratch extensions" section, you might also need to download: 
+
+* scratch-render: [https://github.com/PTegmark/scratch-render](https://github.com/PTegmark/scratch-render)
+
+and save it in the same directory as the other repositories. <br/><br/>
+
 During my time working on the project, I created a new Scratch extension called GAN Paint, which has only 1 block. This block says "save [EDITOR] as a costume" where [EDITOR] is a clickable dropdown that contains the GAN Paint editor. Here's a picture of the block with the dropdown opened: 
 
 ![Image of GAN Paint block and dropdown](GAN%20Paint%20Dropdown.png)
@@ -117,9 +134,11 @@ And here is a more zoomed-in picture:
 
 ![Zoomed-In Image of GAN Paint block and dropdown](GAN%20Paint%20Dropdown%20Zoomed%20In.png)
 
-The block's opcode (the opcode is the function runs when the block gets activated) currently does nothing besides print some stuff to the console (this is not important, and you can remove my "console.log" statement with no repercussions). Once completed, however, the block's opcode is supposed to save the GAN Paint editor's main image either as a backdrop of the Stage, or as a costume of the sprite that owns the block. 
+The block's opcode (the opcode is the function that runs when the block gets activated) currently does nothing besides print some stuff to the console (this is not important, and you can remove my "console.log" statement and my commented-out code from the opcode with no repercussions). Once completed, however, the block's opcode is supposed to save the GAN Paint editor's main image either as a backdrop of the Stage, or as a costume of the sprite that owns the block. 
 
-What The Block Currently Does: 
+The GAN Paint extension's main file is "scratch-vm/src/extensions/scratch3_ganpaint/index.js", while the ganpaint field is controlled by the file "scratch-blocks/core/field_ganpaint.js". 
+
+### What The Block Currently Does: 
 
 * It displays a dropdown GUI for the GAN Paint editor. This dropdown field is of the type "ganpaint", a new field type that I created for this project. 
 
@@ -131,13 +150,13 @@ What The Block Currently Does:
 
 * When clicked, the 11th text button (labeled "reset") resets the main image to display the original version of the image currently being edited. 
 
-* If the user drags the mouse across the main image, the coordinates of all points within the image that the mouse drags over will be stored in an array called "selectedPoints". selectedPoints is reset every time that the main image is clicked on or dragged. Currently, selectedPoints is simply being printed to the console once the user releases the mouse after dragging it across the main image. However, in the future, this should instead cause selectedPoints to be sent to the GAN Paint server, along with brushState, drawingState, and the current main image. 
+* If the user drags the mouse across the main image, the coordinates of all points within the image that the mouse dragged over will be stored in an array called "selectedPoints". selectedPoints is reset every time that the main image is clicked on or dragged. Currently, selectedPoints is simply being printed to the console once the user releases the mouse after dragging it across the main image. However, in the future, releasing the mouse after dragging it across the main image should instead cause selectedPoints to be sent to the GAN Paint server, along with brushState, drawingState, and the current main image. 
 
 * When any given church selection button is clicked, the main image will be set to display the corresponding image. 
 
-What The Block Still Needs To Do: 
+### What The Block Still Needs To Do: 
 
-* The 10th text button (labeled "undo"), can be clicked, but currently doesn't do anything besides print the message "Undo button clicked. " to the console. It needs to be properly implemented as an undo button. This undo button will ideally function by storing previous versions of the main image on the user's computer, and accessing them as necessary when the undo button is clicked. Of course, the actual implementation of the undo button will be up to you (assuming that you are the one who will finish this project). Insert the code for the undo button within the function "Blockly.FieldGANPaint.prototype.onButtonClick" in the file "scratch-blocks/core/field_ganpaint.js", at the spot that says: 
+* The 10th text button (labeled "undo"), can be clicked, but currently doesn't do anything besides print the message "Undo button clicked. " to the console. It needs to be properly implemented as an undo button. This undo button will ideally function by storing previous versions of the main image on the user's web browser, and accessing them as necessary when the undo button is clicked. Of course, the actual implementation of the undo button will be up to you (assuming that you are the one who will finish this project). Insert the code that you write for the undo button within the function "Blockly.FieldGANPaint.prototype.onButtonClick" in the file "scratch-blocks/core/field_ganpaint.js", at the spot that says: 
 
 ```
 // ***
@@ -145,7 +164,7 @@ What The Block Still Needs To Do:
 // ***
 ```
 
-* The ganpaint field does not yet communicate with the GAN Paint server. Ultimately, the field will have to send the main image, along with the information contained in selectedPoints, brushState, and drawingState, to the GAN Paint server whenever the user finishes dragging the mouse across the main image. To help implement this, you will need to add some code to the function "Blockly.FieldGANPaint.prototype.onMouseUp" within the file "scratch-blocks/core/field_ganpaint.js". Add the code at the part of the function where this comment is found:  
+* The ganpaint field does not yet communicate with the GAN Paint server. Ultimately, the ganpaint field will have to send the main image, along with the information contained in selectedPoints, brushState, and drawingState, to the GAN Paint server whenever the user finishes dragging the mouse across the main image. To help implement this, you will need to add some code to the function "Blockly.FieldGANPaint.prototype.onMouseUp" within the file "scratch-blocks/core/field_ganpaint.js". Add the code at the part of the function where this comment is found:  
 
 ```
 // ***
@@ -169,6 +188,8 @@ I have not tested the GAN Paint extension in Chrome, Microsoft Edge, Internet Ex
 * On the [GAN Paint website](http://gandissect.res.ibm.com/ganpaint.html?project=churchoutdoor&layer=layer4), the main image is visibly shaded as the user drags their mouse over it. Currently, however, the ganpaint field in Scratch does not do so. So, if you have time, this should be implemented in the ganpaint field. To accomplish this, you will probably need to add code to the functions "Blockly.FieldGANPaint.prototype.onMouseDown" and "Blockly.FieldGANPaint.prototype.onMouseMove" in the file "scratch-blocks/core/field-ganpaint.js". 
 
 * Optional: Depending on the circumstances for which it is to be used, the GAN Paint extension might eventually need to be viewable in other languages. This, however, is completely optional at this point, as it is not at all an immediate concern. 
+
+* [GAN Paint extension needs custom extension images]
 
 Please read the section of this document called "The blocks playground" before you start making alterations to scratch-blocks/core/field_ganpaint.js, as the blocks playground will save you a lot of time. 
 
@@ -539,6 +560,13 @@ My modified versions of the scratch-gui, scratch-vm, and scratch-blocks reposito
 * [Inspect Element! ](https://www.lifewire.com/get-inspect-element-tool-for-browser-756549)
 * [Print statements! ](https://developer.mozilla.org/en-US/docs/Web/API/Console/log)
 * For a list of the different Scratch block types, see the file "scratch-vm/src/extension-support/block-type.js". For a list of most (this list doesn't include dropdown menus) of the different Scratch field types, see the file "scratch-vm/src/extension-support/argument-type.js". 
+* If you've never used the terminal before, I would recommend learning the following commands and things: 
+  * cd (change working directory)
+  * ls (list the items in a directory)
+  * ls -a (list ALL the items in a directory)
+  * pwd (print working directory)
+  * "." (a single period) refers to the working directory. So "cd folder-name" does the same thing as "cd ./folder-name"
+  * ".." (two periods) refers to the parent directory. So if your working directory is "/Users/username/folder1/folder2", entering the command "cd .." into the terminal would change your working directory to "/Users/username/folder1". 
 
 
 
