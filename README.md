@@ -74,7 +74,7 @@ and saving it in the same folder as the other 3 repositories.
 
 Now, to run my modified version of Scratch, open the terminal, cd into the scratch-gui directory, and enter the command "npm start". Once everything finishes compiling, go to "http://localhost:8601/" in your web browser, and you should see my modified version of Scratch! From there, to load the GAN Paint extension, click on the "Add Extension" button in the bottom left corner of the Scratch GUI, scroll down to the extension labeled "GAN Paint", and click on it. 
 
-If the "npm start" command isn't working, maybe try also downloading my version of the scratch-render repository as described above. If things still don't work after that, then: ask your advisor for help, try to figure the problem out yourself, and/or see if [this tutorial](https://scratch.mit.edu/discuss/topic/336496/) can help you. 
+If the "npm start" command isn't working, maybe try also downloading my version of the scratch-render repository as described above. If things still don't work after that, then: ask your supervisor for help, try to figure the problem out yourself, and/or see if [this tutorial](https://scratch.mit.edu/discuss/topic/336496/) can help you. 
 
 Whenever you need to rebuild scratch-blocks (i.e. make sure that the changes you make to scratch-blocks get expressed), you will need to open the terminal, cd into the scratch-blocks directory, and enter the command "npm run prepublish". Wait until this has finished executing, then run the command "npm start" within scratch-gui to open the Scratch GUI again. Also, to execute the command "npm run prepublish" in scratch-blocks, you will need to be using Python 2 on your computer. This may require you setting up a virtual environment on your computer to run Python 2. If you don't know how to do this, talk to your supervisor, or try to figure it out yourself. 
 
@@ -134,7 +134,7 @@ And here is a more zoomed-in picture:
 
 ![Zoomed-In Image of GAN Paint block and dropdown](GAN%20Paint%20Dropdown%20Zoomed%20In.png)
 
-The block's opcode (the opcode is the function that runs when the block gets activated) currently does nothing besides print some stuff to the console (this is not important, and you can remove my "console.log" statement and my commented-out code from the opcode with no repercussions). Once completed, however, the block's opcode is supposed to save the GAN Paint editor's main image either as a backdrop of the Stage, or as a costume of the sprite that owns the block. 
+The block's opcode (the opcode is the function that runs when the block gets activated) currently does nothing besides print some stuff to the console (this is not important, and you can remove my "console.log" statement from the opcode with no repercussions). Once completed, however, the block's opcode is supposed to save the GAN Paint editor's main image either as a backdrop of the Stage, or as a costume of the sprite that owns the block. 
 
 The GAN Paint extension's main file is "scratch-vm/src/extensions/scratch3_ganpaint/index.js", while the ganpaint field is controlled by the file "scratch-blocks/core/field_ganpaint.js". 
 
@@ -181,17 +181,17 @@ The GAN Paint extension's main file is "scratch-vm/src/extensions/scratch3_ganpa
 
 ![Dropdown in Safari](GAN%20Paint%20Dropdown%20Safari.png)
 
-This needs to be fixed. You will need the GAN Paint extension to function properly in Firefox, Chrome, Safari, and Microsoft Edge (possibly also Internet Explorer and Opera--ask whoever is in charge (presumably Katherine Gallagher) about what browsers the GAN Paint extension needs to function properly in). Right now, the SVG images in question do display properly in Firefox though, I can guarantee that much. 
+This needs to be fixed. You will need the GAN Paint extension to function properly in Firefox, Chrome, Safari, and Microsoft Edge (and possibly also in Internet Explorer and Opera--ask whoever is in charge (presumably your supervisor) about what browsers the GAN Paint extension needs to function properly in). Right now, the SVG images in question do display properly in Firefox though, I can guarantee that much. 
 
 I have not tested the GAN Paint extension in Chrome, Microsoft Edge, Internet Explorer, or Opera, so I don't know how well the extension currently works in those browsers. 
 
-* On the [GAN Paint website](http://gandissect.res.ibm.com/ganpaint.html?project=churchoutdoor&layer=layer4), the main image is visibly shaded as the user drags their mouse over it. Currently, however, the ganpaint field in Scratch does not do so. So, if you have time, this should be implemented in the ganpaint field. To accomplish this, you will probably need to add code to the functions "Blockly.FieldGANPaint.prototype.onMouseDown" and "Blockly.FieldGANPaint.prototype.onMouseMove" in the file "scratch-blocks/core/field-ganpaint.js". 
+* On the [GAN Paint website](http://gandissect.res.ibm.com/ganpaint.html?project=churchoutdoor&layer=layer4), the main image gets visibly shaded as the user drags their mouse over it. Currently, however, the ganpaint field in Scratch does not do so. So, if you have time, this shading feature should be implemented in the ganpaint field. To accomplish this, you will probably need to add code to the functions "Blockly.FieldGANPaint.prototype.onMouseDown" and "Blockly.FieldGANPaint.prototype.onMouseMove" in the file "scratch-blocks/core/field-ganpaint.js". 
 
-* Optional: Depending on the circumstances for which it is to be used, the GAN Paint extension might eventually need to be viewable in other languages. This, however, is completely optional at this point, as it is not at all an immediate concern. 
+* The images that the GAN Paint extension currently uses in the extension library (i.e. the pictures that you see when you click the "Add Extension" button in the Scratch GUI) are the same as the pictures used in [this tutorial](https://medium.com/@hiroyuki.osaki/how-to-develop-your-own-block-for-scratch-3-0-1b5892026421). Eventually, these pictures will need to be replaced with other, more suitable images. Replacing these images will involve replacing the two images stored in the folder "scratch-gui/src/lib/libraries/extensions/ganpaint", and modifying the file "scratch-gui/src/lib/libraries/extensions/index.jsx" accordingly. 
 
-* [GAN Paint extension needs custom extension images]
+* OPTIONAL: Depending on the circumstances for which it is to be used, the GAN Paint extension might eventually need to be viewable in other languages. This, however, is completely optional at this point, as it is not at all an immediate concern. 
 
-Please read the section of this document called "The blocks playground" before you start making alterations to scratch-blocks/core/field_ganpaint.js, as the blocks playground will save you a lot of time. 
+Please read the section of this document called "The blocks playground" before you start making alterations to scratch-blocks/core/field_ganpaint.js, as using the blocks playground will save you a lot of time. 
 
 Good luck! And feel free to contact me if you have any questions (especially if I explained something poorly and/or forgot to mention something important). 
 
@@ -574,10 +574,6 @@ My modified versions of the scratch-gui, scratch-vm, and scratch-blocks reposito
 
 
 TODO: 
-npm start and npm run prepublish
-
-index.jsx help link should be changed
-
 add in missing pictures, and address any in-line notes
 
 revise this document
