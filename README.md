@@ -50,7 +50,7 @@ Or try using Scratch [here](https://scratch.mit.edu/projects/editor/?tutorial=ge
 
 As of when I wrote this, the latest version of Scratch (and the one that we'll be working with) is Scratch 3. Scratch is written primarily in JavaScript, and has both an [online editor](https://scratch.mit.edu/projects/editor/?tutorial=getStarted) and an [offline editor](https://scratch.mit.edu/download/). The repositories for the code to Scratch's online editor are publicly available on GitHub, at [https://github.com/LLK/](https://github.com/LLK/). 
 
-Scratch has various different types of blocks. They are: Motion, Looks, Sound, Events, Control, Sensing, Operators, Variables, and My Blocks. However, you can also load (or make) extensions to Scratch. An extension adds a new set of blocks with their own functionality. For example, the Translate extension lets you use Google Translate to translate text into different languages. To load an extension, click on the "Add Extension" button in the bottom-left corner of the Scratch GUI. 
+Scratch has various different types of blocks. They are: Motion, Looks, Sound, Events, Control, Sensing, Operators, Variables, and My Blocks. However, you can also load (or make) extensions to Scratch. An extension adds a new set of blocks with their own functionality. For example, the Translate extension lets you use Google Translate to translate text into different languages. To load an extension, click on the "Add Extension" button in the bottom-left corner of the Scratch GUI (by "the Scratch GUI" I mean the Scratch editor). 
 
 Only 11 extensions are officially supported by Scratch, so any extensions you make (unless later incorporated into Scratch by the Scratch team) can only be used on your computer. For more information, see the [Scratch 3 Extensions Documentation](https://github.com/LLK/scratch-vm/blob/develop/docs/extensions.md). 
 
@@ -175,6 +175,14 @@ The GAN Paint extension's main file is "scratch-vm/src/extensions/scratch3_ganpa
 
 * Continuing off of the previous point, the ganpaint field will also have to get a response from the GAN Paint server. This response should contain the new main image, which the ganpaint field will then display as the new main image. The function "Blockly.FieldGANPaint.prototype.setValue" (in the file "scratch-blocks/core/field_ganpaint.js") might be of use in displaying the image from the GAN Paint server as the new main image, although you will need to modify the function first to make it better suit your needs. 
 
+  Also, once this task is completed, please change the following block comment in the file "scratch-vm/src/extension-support/argument-type.js" so that it more accurately describes what the actual value of the ganpaint field is: 
+
+```
+    /**
+     * String value with ganpaint field
+     */
+```
+
 * When activated, the GAN Paint block should (it does not currently do this) save its main image as either a sprite costume or as a Stage backdrop. To accomplish this, you will need to add code to the GAN Paint block's opcode (i.e. the function "saveGANPaintImage" within the file "scratch-vm/src/extensions/scratch3_ganpaint/index.js"). Scratch does let its users import external images to be used as a costumes--if you can figure out what JavaScript function it is that does this, you can probably use that function to save the main GAN Paint image as a costume or backdrop. I don't know what function it is though, so you'll have to find it. Or save the main GAN Paint image in some other way. Also, feel free to disregard my commented-out code in the saveGANPaintImage function in the file "scratch-vm/src/extensions/scratch3_ganpaint/index.js". 
 
 * The SVG images that I have used to create the GAN Paint field don't display properly in Safari. In Safari, you just get this instead: 
@@ -236,17 +244,17 @@ There are many different field types, from text fields to dropdown menus to angl
 
 ![Image of a Dropdown Menu](DropdownMenu.png)
 
-This list of field types (not including the dropdown menu) can also be found in the file "scratch-vm/scr/extension-support/argument-type.js". 
+This list of field types (not including the dropdown menu) can also be found in the file "scratch-vm/src/extension-support/argument-type.js". 
 
 As of when I write this, there is no support for creating custom field types using Scratch extensions. So, if you can implement your Scratch extension without creating any additional fields, that would be for the best. 
 
-But what if you do need to create your own field type? How can you do that? I will provide you with the list of steps that I followed to set up my GAN Paint field as a new field type. Assuming that I haven't forgotten about anything, you should be able to repeat these steps yourself to set up your own custom field type. If my instructions do not work, consider meeting with someone from the Scratch team to get help if you can. 
+But what if you do need to create your own field type? How can you do that? I will provide you with the list of steps that I followed to set up my GAN Paint field as a new field type. Assuming that I haven't forgotten about anything important, you should be able to repeat these steps yourself to set up your own custom field type. If my instructions do not work, consider meeting with someone from the Scratch team to get help, if that option is open to you. 
 
 ### The steps I followed to implement a new "ganpaint" field type
 
 1. I made a copy of the file "scratch-blocks/core/field_matrix.js". I named said copy "field_ganpaint.js", and saved it in the directory "scratch-blocks/core". 
 
-2. "scratch-blocks/core/field_matrix.js" uses the namespace "Blockly.FieldMatrix". To ensure that "scratch-blocks/core/field_ganpaint.js" uses its own unique namespace, I replaced every appearance of "Blockly.FieldMatrix" with "Blockly.FieldGANPaint" inside of the "scratch-blocks/core/field_ganpaint.js" file. 
+2. "scratch-blocks/core/field_matrix.js" uses the namespace "Blockly.FieldMatrix". To ensure that "scratch-blocks/core/field_ganpaint.js" uses its own unique namespace, I replaced every appearance of the text "Blockly.FieldMatrix" in the file "scratch-blocks/core/field_ganpaint.js" with the text "Blockly.FieldGANPaint". 
 
 3. I changed the line at the end of "scratch-blocks/core/field_matrix.js", which previously read: 
 
@@ -256,9 +264,7 @@ so that it instead reads:
 
 `Blockly.Field.register('field_ganpaint', Blockly.FieldGANPaint);`
 
-This is to register your new field type. 
-
-4. I added the following code to "scratch-blocks/blocks_common/matrix.js": 
+4. I added the following code at the end of the file "scratch-blocks/blocks_common/matrix.js": 
 
 ```
 Blockly.Blocks['ganpaint'] = {
@@ -291,7 +297,7 @@ to the list of goog.require() statements at the top of the file "scratch-blocks/
 
 6. OPTIONAL BUT RECOMMENDED: If you would like to use the blocks playground to work on your field type (this will save you a lot of time; see the section of this document entitled "The blocks playground" for more information), you will also need to register your field as part of a block within the blocks playground. To do so for the ganpaint field type, I made changes to the files "scratch-blocks/blocks_vertical/default_toolbox.js" and to "scratch-blocks/blocks_vertical/extensions.js", as can be seen here: [https://github.com/PTegmark/scratch-blocks/commit/3aa5429b884c49426b8f7c9bcd9120f0e7de0018](https://github.com/PTegmark/scratch-blocks/commit/3aa5429b884c49426b8f7c9bcd9120f0e7de0018). 
 
-Or, should you however have trouble viewing my changes using this link, here is a written description of what I did: 
+Or, should you however have trouble viewing my changes using that link, here is a written description of what I did: 
 
 First, I added the following lines to "scratch-blocks/blocks_vertical/default_toolbox.js": 
 
@@ -357,7 +363,7 @@ Blockly.Blocks['extension_ganpaint'] = {
 };
 ```
 
-7. I opened "scratch-vm/src/extension-support/argument-type.js", and added the new attribute “GANPAINT” to the ArgumentType object, with a value of “ganpaint”. After finishing this step, the file "scratch-vm/src/extension-support/argument-type.js" looked like this: 
+7. I opened "scratch-vm/src/extension-support/argument-type.js", and added the new attribute “GANPAINT” to the ArgumentType object, assigning to my new attribute a value of “ganpaint”. After finishing this step, the file "scratch-vm/src/extension-support/argument-type.js" looked like this: 
 
 ```
 /**
@@ -503,9 +509,13 @@ class Scratch3GANPaintBlocks {
         };
     }
 
-
-    // [OTHER STUFF HERE]
-
+    /**
+     * Eventually is supposed to save the GAN Paint editor's image as a costume. Currently it does not do so. 
+     * @param {object} args - the block's arguments. 
+     */
+    saveGANPaintImage (args) {
+        console.log(args);
+    }
 
 }
 
@@ -521,14 +531,14 @@ module.exports = Scratch3GANPaintBlocks;
 
 As you may remember from [this tutorial](https://scratch.mit.edu/discuss/topic/336496/) from the section "How to make Scratch extensions", if you make a change to the scratch-blocks directory and want that change to be reflected in the Scratch GUI, you'll need to: 
 
-* 1: Open the terminal, cd into the scratch-blocks directory, and run the command "npm run prepublish" (side note: for this command to work properly, you'll need to be using Python 2 on your computer). 
-* 2: Also in the terminal, cd into the scratch-gui directory, and run the command "npm start". 
+* 1: Open the terminal, cd into the scratch-blocks directory, and run the command "npm run prepublish" (side note: for this command to work properly, you'll need to be running Python 2 on your computer). 
+* 2: Once the "npm run prepublish" command has finished executing, cd into the scratch-gui directory, and run the command "npm start". 
 
 Now, running these two commands typically takes me about 3 minutes to do on my laptop, which can be a pretty long time to have to wait. But thankfully, there is another, faster way to see the effect of your changes to scratch-blocks: using the blocks playground. To access the blocks playground, just open the file "scratch-blocks/tests/vertical_playground.html" in your web browser. You should see this: 
 
 ![Image of Blocks Playground](BlocksPlayground.png)
 
-The blocks playground loads only Scratch's blocks and nothing else, which lets you test the changes you've made to scratch-blocks without having to wait for "npm run prepublish" and "scratch-gui" to run. If you're working on the GAN Paint extension, a GAN Paint block is already included for you to use. If you need to add your own new block to the blocks playground, or if you need to modify an existing block in the blocks playground, you'll need to make changes to the files "scratch-blocks/blocks_vertical/default_toolbox.js" and "scratch-blocks/blocks_vertical/extensions.js". For more information, see step 6 of the list of steps for implementing the ganpaint field type in the section "How to make custom field types". 
+The blocks playground loads only Scratch's blocks and nothing else, which lets you test the changes you've made to scratch-blocks without having to wait for "npm run prepublish" and "scratch-gui" to run. If you're working on the GAN Paint extension, a GAN Paint block is already included for you to use. If you need to add your own new block to the blocks playground, or if you need to modify an existing block in the blocks playground, you'll need to make changes to the files "scratch-blocks/blocks_vertical/default_toolbox.js" and/or "scratch-blocks/blocks_vertical/extensions.js". For more information, see step 6 of the list of steps for implementing the ganpaint field type in the section "How to make custom field types". 
 
 
 
@@ -543,11 +553,12 @@ The blocks playground loads only Scratch's blocks and nothing else, which lets y
 * Tutorial for Scratch Extension Set-Up: [https://scratch.mit.edu/discuss/topic/336496/](https://scratch.mit.edu/discuss/topic/336496/)
 * Tutorial on how to make a very basic Scratch extension (has some issues): [https://medium.com/@hiroyuki.osaki/how-to-develop-your-own-block-for-scratch-3-0-1b5892026421](https://medium.com/@hiroyuki.osaki/how-to-develop-your-own-block-for-scratch-3-0-1b5892026421)
 
-My modified versions of the scratch-gui, scratch-vm, and scratch-blocks repositories: 
+My modified versions of the scratch-gui, scratch-vm, scratch-blocks, and scratch-render repositories: 
 
 * scratch-gui: [https://github.com/PTegmark/scratch-gui](https://github.com/PTegmark/scratch-gui)
 * scratch-vm: [https://github.com/PTegmark/scratch-vm](https://github.com/PTegmark/scratch-vm)
 * scratch-blocks: [https://github.com/PTegmark/scratch-blocks](https://github.com/PTegmark/scratch-blocks)
+* scratch-render: [https://github.com/PTegmark/scratch-render](https://github.com/PTegmark/scratch-render)
 
 
 ### Other helpful resources and tools: 
@@ -565,25 +576,12 @@ My modified versions of the scratch-gui, scratch-vm, and scratch-blocks reposito
   * ls (list the items in a directory)
   * ls -a (list ALL the items in a directory)
   * pwd (print working directory)
-  * "." (a single period) refers to the working directory. So "cd folder-name" does the same thing as "cd ./folder-name"
+  * "." (a single period) refers to the working directory. So "cd folder-name" does the same thing as "cd ./folder-name". 
   * ".." (two periods) refers to the parent directory. So if your working directory is "/Users/username/folder1/folder2", entering the command "cd .." into the terminal would change your working directory to "/Users/username/folder1". 
 
 
 
 
-
-
 TODO: 
-add in missing pictures, and address any in-line notes
-
-revise this document
 
 add links to contents that link to each section
-
-
-
-
-
-UNFINISHED
-
-
