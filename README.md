@@ -547,7 +547,7 @@ The blocks playground loads only Scratch's blocks and nothing else, which lets y
 ### A list of potentially useful hyperlinks from previous sections: 
 
 * GAN Paint: [http://gandissect.res.ibm.com/ganpaint.html?project=churchoutdoor&layer=layer4](http://gandissect.res.ibm.com/ganpaint.html?project=churchoutdoor&layer=layer4)
-* Scratch Website: [scratch.mit.edu](scratch.mit.edu)
+* Scratch Website: [https://scratch.mit.edu/](https://scratch.mit.edu/)
 * Scratch Online Editor GitHub Repositories: [https://github.com/LLK/](https://github.com/LLK/)
 * Scratch 3 Extensions Documentation: [https://github.com/LLK/scratch-vm/blob/develop/docs/extensions.md](https://github.com/LLK/scratch-vm/blob/develop/docs/extensions.md)
 * Tutorial for Scratch Extension Set-Up: [https://scratch.mit.edu/discuss/topic/336496/](https://scratch.mit.edu/discuss/topic/336496/)
