@@ -42,7 +42,7 @@ which is what English grammar would dictate that I do.
 
 
 ## What is Scratch? 
-I would describe Scratch as a programming language for kids, developed by the Lifelong Kindergarten Group at the MIT Media Lab. It uses blocks instead of lines of code (which is nice because that eliminates syntax errors), and is overall more intuitive to understand than most other programming languages. You can make all sorts of projects in Scratch, and then share them on the [Scratch website](scratch.mit.edu). Scratch can do most of what other programming languages can do, although a Scratch file can only be run inside the Scratch editor. Scratch's other downsides are that it is very slow at math when compared to other programming languages, and that (as far as I am aware) it cannot read from or write to outside files. 
+I would describe Scratch as a programming language for kids, developed by the Lifelong Kindergarten Group at the MIT Media Lab. It uses blocks instead of lines of code (which is nice because that eliminates syntax errors), and is overall more intuitive to understand than most other programming languages. You can make all sorts of projects in Scratch, and then share them on the [Scratch website](https://scratch.mit.edu/). Scratch can do most of what other programming languages can do, although a Scratch file can only be run inside the Scratch editor. Scratch's other downsides are that it is very slow at math when compared to other programming languages, and that (as far as I am aware) it cannot read from or write to outside files. 
 
 For more information, check out Scratch's About page [here](https://scratch.mit.edu/about). 
 
@@ -578,10 +578,3 @@ My modified versions of the scratch-gui, scratch-vm, scratch-blocks, and scratch
   * pwd (print working directory)
   * "." (a single period) refers to the working directory. So "cd folder-name" does the same thing as "cd ./folder-name". 
   * ".." (two periods) refers to the parent directory. So if your working directory is "/Users/username/folder1/folder2", entering the command "cd .." into the terminal would change your working directory to "/Users/username/folder1". 
-
-
-
-
-TODO: 
-
-add links to contents that link to each section
